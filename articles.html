@@ -1,0 +1,29 @@
+---
+layout: default
+title: Articles
+permalink: /articles/
+---
+
+<div class="section" style="padding-top: 3rem;">
+  <div class="section-header">
+    <div class="section-title">All articles</div>
+  </div>
+  <div class="article-list">
+    {% for post in site.posts %}
+    <a href="{{ post.url }}" class="article-item">
+      <div class="article-badge {{ post.badge-class }}">{{ post.badge | default: "CCNA" }}</div>
+      <div>
+        <div class="article-title">{{ post.title }}</div>
+        <div class="article-meta">
+          <span>{{ post.date | date: "%d %B %Y" }}</span>
+          <span>{{ post.read-time | default: "5" }} min read</span>
+        </div>
+      </div>
+    </a>
+    {% else %}
+    <div class="article-item">
+      <div class="article-title" style="color: var(--text-muted);">First article coming soon.</div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
