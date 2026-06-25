@@ -1,0 +1,26 @@
+title: eoinderry
+description: CCNA and networking concepts that actually stick
+url: "https://eoinderry.com"
+baseurl: ""
+author: Eoin Derry
+email: ""
+
+theme: null
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+markdown: kramdown
+highlighter: rouge
+
+permalink: /:year/:month/:day/:title/
+
+navigation:
+  - title: Articles
+    url: /articles/
+  - title: Topics
+    url: /topics/
+  - title: Resources
+    url: /resources/
+  - title: About
+    url: /about/
