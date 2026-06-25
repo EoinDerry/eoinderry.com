@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  {% feed_meta %}
+  {% seo %}
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="logo-mark">ED</div>
+        <span class="logo-text">eoin<span class="logo-accent">derry</span></span>
+      </a>
+      <div class="nav-links">
+        {% for item in site.navigation %}
+          <a href="{{ item.url }}" class="nav-link">{{ item.title }}</a>
+        {% endfor %}
+        <a href="https://youtube.com/@eoinderry" class="nav-yt" target="_blank" rel="noopener">
+          ▶ @eoinderry
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-copy">© {{ site.time | date: "%Y" }} eoinderry.com</span>
+      <div class="footer-links">
+        <a href="https://youtube.com/@eoinderry" target="_blank" rel="noopener">YouTube</a>
+        <a href="/feed.xml">RSS</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
