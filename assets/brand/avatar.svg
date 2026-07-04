@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Eoin Derry avatar">
+  <!-- eoinderry.com — profile avatar. Safe inside circular crops (YouTube, LinkedIn, X). -->
+  <rect width="512" height="512" fill="#070b12"/>
+  <g transform="translate(112 143) scale(2.77)">
+    <g fill="none" stroke="#e8edf4" stroke-width="7" stroke-linecap="round">
+      <path d="M54 50 A22 22 0 1 0 52.4 58.2"/>
+      <path d="M10 50 H54"/>
+      <path d="M94 37.35 A22 22 0 1 0 94 62.65"/>
+      <path d="M94 10 V72"/>
+    </g>
+    <g fill="#e8edf4">
+      <circle cx="10" cy="50" r="6.5"/>
+      <circle cx="54" cy="50" r="6.5"/>
+      <circle cx="94" cy="37.35" r="6.5"/>
+      <circle cx="94" cy="10" r="6.5"/>
+      <circle cx="94" cy="72" r="6.5"/>
+    </g>
+    <circle fill="#35e0d0" cx="44.6" cy="68" r="5.5"/>
+  </g>
+</svg>
