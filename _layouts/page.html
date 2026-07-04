@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<article class="page">
+  <header class="page-head">
+    <div class="wrap wrap--narrow">
+      {% if page.eyebrow %}<p class="eyebrow">{{ page.eyebrow }}</p>{% endif %}
+      <h1 class="page-title">{{ page.title }}</h1>
+      {% if page.standfirst %}<p class="article-standfirst">{{ page.standfirst }}</p>{% endif %}
+    </div>
+    <div class="article-rule" aria-hidden="true"><span class="rule-packet"></span></div>
+  </header>
+  <div class="wrap wrap--narrow article-body">
+    {{ content }}
+  </div>
+</article>

@@ -1,0 +1,8 @@
+<svg class="mark" width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+  <path class="mark-link" d="M8.5 20.5 15 9.5m0 0 6.5 11M15 9.5V4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  <path class="mark-link mark-link--dim" d="M8.5 20.5h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  <circle class="mark-node" cx="15" cy="9.5" r="3" fill="currentColor"/>
+  <circle class="mark-node mark-node--accent" cx="8.5" cy="20.5" r="3"/>
+  <circle class="mark-node" cx="21.5" cy="20.5" r="3" fill="currentColor"/>
+  <circle class="mark-node" cx="15" cy="3.5" r="1.6" fill="currentColor" opacity=".55"/>
+</svg>

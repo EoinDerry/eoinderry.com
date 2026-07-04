@@ -1,26 +1,61 @@
-title: eoinderry
-description: CCNA and networking concepts that actually stick
-url: "https://eoinderry.com"
-baseurl: ""
-author: Eoin Derry
-email: ""
+# ------------------------------------------------------------------
+# EoinDerry.com — site configuration
+# Edit the values below; everything on the site reads from here.
+# ------------------------------------------------------------------
 
-theme: null
+title: Eoin Derry
+tagline: Networks, taught properly.
+description: >-
+  Eoin Derry is an IT networking professional and trainer. Long-form,
+  carefully written articles on the CCNA 200-301 syllabus and the craft
+  of real-world networking.
+url: "https://eoinderry.com"
+lang: en
+
+author:
+  name: Eoin Derry
+  email: hello@eoinderry.com
+
+# Social links — leave a value blank ("") to hide that link everywhere.
+social:
+  youtube: "https://www.youtube.com/@eoinderry"
+  linkedin: "https://www.linkedin.com/in/eoinderry"
+  github: "https://github.com/eoinderry"
+
+# Newsletter — paste your provider's form action URL here when ready
+# (Buttondown, Mailerlite, ConvertKit…). See README for details.
+newsletter_action: ""
+
+# ------------------------------------------------------------------
+# Build settings — you should not need to touch anything below.
+# ------------------------------------------------------------------
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+highlighter: rouge
+
+permalink: /articles/:title/
+timezone: Europe/Dublin
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
 
-markdown: kramdown
-highlighter: rouge
+feed:
+  path: feed.xml
 
-permalink: /:year/:month/:day/:title/
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
 
-navigation:
-  - title: Articles
-    url: /articles/
-  - title: Topics
-    url: /topics/
-  - title: Resources
-    url: /resources/
-  - title: About
-    url: /about/
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

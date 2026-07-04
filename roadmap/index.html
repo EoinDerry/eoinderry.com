@@ -1,0 +1,68 @@
+---
+layout: default
+title: CCNA Roadmap
+nav: roadmap
+permalink: /roadmap/
+description: The full CCNA 200-301 syllabus as a living map — every exam domain, every topic, linked to articles as they're written.
+---
+
+<section class="page-head page-head--list">
+  <div class="wrap">
+    <p class="eyebrow">CCNA 200-301</p>
+    <h1 class="page-title">The syllabus, as a map</h1>
+    <p class="article-standfirst">
+      Six exam domains, weighted the way Cisco weights them. Each node
+      fills in as articles are published — bookmark this page and watch
+      the network light up.
+    </p>
+  </div>
+  <div class="article-rule" aria-hidden="true"><span class="rule-packet"></span></div>
+</section>
+
+<section class="section section--flush">
+  <div class="wrap">
+    <div class="roadmap" role="list">
+      <div class="roadmap-spine" aria-hidden="true"><span class="spine-packet"></span></div>
+      {% for dom in site.data.roadmap %}
+      {% assign posts = site.posts | where: "domain", dom.id %}
+      <section class="road-node reveal" id="{{ dom.id }}" role="listitem">
+        <div class="road-port" aria-hidden="true">
+          <span class="road-jack{% if posts.size > 0 %} is-live{% endif %}"></span>
+        </div>
+        <div class="road-card{% if posts.size > 0 %} is-live{% endif %}">
+          <header class="road-head">
+            <span class="road-num">{{ dom.number }}</span>
+            <h2 class="road-title">{{ dom.title }}</h2>
+            <span class="chip chip--weight" title="Share of the 200-301 exam">{{ dom.weight }} of exam</span>
+          </header>
+          <p class="road-blurb">{{ dom.blurb }}</p>
+
+          <details class="road-topics">
+            <summary>Syllabus topics <span class="road-topic-count">{{ dom.topics | size }}</span></summary>
+            <ul>
+              {% for topic in dom.topics %}<li>{{ topic }}</li>{% endfor %}
+            </ul>
+          </details>
+
+          {% if posts.size > 0 %}
+          <h3 class="road-sub">Articles in this domain</h3>
+          <ul class="road-posts">
+            {% for p in posts %}
+            <li><a href="{{ p.url | relative_url }}"><span class="packet-dot" aria-hidden="true"></span>{{ p.title }}</a></li>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <p class="road-soon"><span class="led led--amber"></span>Articles in progress — subscribe below to catch them.</p>
+          {% endif %}
+        </div>
+      </section>
+      {% endfor %}
+    </div>
+
+    <div class="wrap--narrow foot-news reveal">
+      <h2 class="foot-heading">Watch the map light up</h2>
+      <p>Each new article switches its domain from amber to live. One email per article.</p>
+      {% include newsletter.html %}
+    </div>
+  </div>
+</section>

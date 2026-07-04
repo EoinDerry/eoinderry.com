@@ -1,0 +1,17 @@
+{% assign p = include.post %}
+{% assign dom = site.data.roadmap | where: "id", p.domain | first %}
+<article class="post-card reveal" data-domain="{{ p.domain }}">
+  <a class="post-card-link" href="{{ p.url | relative_url }}">
+    <div class="post-card-top">
+      {% if dom %}<span class="chip chip--domain">{{ dom.number }} {{ dom.title }}</span>{% endif %}
+      <time class="post-card-date" datetime="{{ p.date | date_to_xmlschema }}">{{ p.date | date: "%-d %b %Y" }}</time>
+    </div>
+    <h3 class="post-card-title">{{ p.title }}</h3>
+    <p class="post-card-desc">{{ p.description | default: p.excerpt | strip_html | truncate: 150 }}</p>
+    <div class="post-card-foot">
+      {% assign words = p.content | strip_html | number_of_words %}
+      <span class="post-card-meta">{{ words | divided_by: 220 | at_least: 1 }} min read</span>
+      <span class="post-card-go">Read <span class="packet-dot" aria-hidden="true"></span></span>
+    </div>
+  </a>
+</article>

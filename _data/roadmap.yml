@@ -1,0 +1,101 @@
+# ------------------------------------------------------------------
+# CCNA 200-301 syllabus roadmap.
+# Each domain becomes a node on the /roadmap/ page. Articles attach
+# themselves to a domain via `domain: <id>` in their front matter.
+# Edit topic lists freely — the page rebuilds itself.
+# ------------------------------------------------------------------
+
+- id: fundamentals
+  number: "1.0"
+  title: Network Fundamentals
+  weight: "20%"
+  blurb: >-
+    The physics and logic underneath everything else — what a network
+    actually is, how data moves, and how addressing carves it up.
+  topics:
+    - Network components — routers, switches, firewalls, APs
+    - Network topology architectures
+    - Physical interfaces and cabling
+    - TCP vs UDP
+    - IPv4 addressing and subnetting
+    - IPv6 addressing and prefix types
+    - Wireless principles
+    - Virtualisation fundamentals
+    - Switching concepts
+
+- id: network-access
+  number: "2.0"
+  title: Network Access
+  weight: "20%"
+  blurb: >-
+    Layer 2 in the real world — VLANs, trunks, spanning tree, and the
+    switch behaviours every engineer gets tested on daily.
+  topics:
+    - VLANs and inter-switch connectivity
+    - Trunking with 802.1Q
+    - EtherChannel (LACP)
+    - Rapid PVST+ spanning tree
+    - Cisco Wireless architectures and AP modes
+    - WLAN components and management access
+
+- id: ip-connectivity
+  number: "3.0"
+  title: IP Connectivity
+  weight: "25%"
+  blurb: >-
+    The largest slice of the exam — how routers decide, how routes are
+    learned, and how OSPF holds a network together.
+  topics:
+    - Routing table components
+    - Router forwarding decisions
+    - Static routing — IPv4 and IPv6
+    - Single-area OSPFv2
+    - First-hop redundancy protocols
+
+- id: ip-services
+  number: "4.0"
+  title: IP Services
+  weight: "10%"
+  blurb: >-
+    The supporting cast that production networks can't run without —
+    NAT, NTP, DHCP, DNS, SNMP, syslog and QoS.
+  topics:
+    - NAT — inside/outside, static and PAT
+    - NTP in client/server mode
+    - DHCP and DNS roles
+    - SNMP and syslog
+    - Per-hop QoS behaviour
+    - SSH remote access
+    - TFTP and FTP roles
+
+- id: security
+  number: "5.0"
+  title: Security Fundamentals
+  weight: "15%"
+  blurb: >-
+    Threats, mitigation and hardening — from device access control and
+    ACLs to Layer 2 security and wireless authentication.
+  topics:
+    - Security concepts — threats, vulnerabilities, mitigation
+    - Device access control and passwords
+    - Site-to-site and remote-access VPNs
+    - Access control lists
+    - DHCP snooping and port security
+    - Authentication, authorisation, accounting (AAA)
+    - WPA2 / WPA3 wireless security
+
+- id: automation
+  number: "6.0"
+  title: Automation & Programmability
+  weight: "10%"
+  blurb: >-
+    Where the industry is heading — controllers, APIs, configuration
+    management, and why the CLI is no longer the whole story.
+  topics:
+    - Automation's impact on network management
+    - Controller-based vs traditional networking
+    - Software-defined architecture (overlay, underlay, fabric)
+    - REST APIs
+    - Configuration management tools
+    - JSON-encoded data
+    - Generative AI and machine ops

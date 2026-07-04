@@ -1,0 +1,25 @@
+---
+layout: default
+title: Page not found
+permalink: /404.html
+sitemap: false
+---
+
+<section class="section">
+  <div class="wrap wrap--narrow err">
+    <pre class="err-term" aria-hidden="true"><code>R1# ping {{ site.url | remove: 'https://' }}{{ page.url }}
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos:
+U.U.U
+Success rate is 0 percent (0/5)</code></pre>
+    <h1 class="page-title">Destination host unreachable</h1>
+    <p class="article-standfirst">
+      That route isn't in the table. It may have been withdrawn,
+      renamed, or never advertised in the first place.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn--solid" href="{{ '/' | relative_url }}">Back to a known-good route</a>
+      <a class="btn btn--ghost" href="{{ '/articles/' | relative_url }}">Browse the articles</a>
+    </div>
+  </div>
+</section>

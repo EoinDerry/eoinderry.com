@@ -1,0 +1,39 @@
+---
+layout: default
+title: Articles
+nav: articles
+permalink: /articles/
+---
+
+<section class="page-head page-head--list">
+  <div class="wrap">
+    <p class="eyebrow">The series</p>
+    <h1 class="page-title">Articles</h1>
+    <p class="article-standfirst">
+      Long-form pieces on the CCNA 200-301 syllabus — and the occasional
+      detour into the networking craft around it. Written to be read
+      slowly and understood once.
+    </p>
+  </div>
+  <div class="article-rule" aria-hidden="true"><span class="rule-packet"></span></div>
+</section>
+
+<section class="section section--flush">
+  <div class="wrap">
+    <div class="filter-row" role="group" aria-label="Filter by exam domain">
+      <button class="chip chip--filter is-active" data-filter="all">All</button>
+      {% for dom in site.data.roadmap %}
+      {% assign count = site.posts | where: "domain", dom.id | size %}
+      {% if count > 0 %}
+      <button class="chip chip--filter" data-filter="{{ dom.id }}">{{ dom.number }} {{ dom.title }}</button>
+      {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="card-grid card-grid--3" data-post-grid>
+      {% for post in site.posts %}{% include post-card.html post=post %}{% endfor %}
+    </div>
+
+    <p class="filter-empty" hidden data-filter-empty>Nothing here yet — this domain is next on the writing desk.</p>
+  </div>
+</section>

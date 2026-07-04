@@ -1,58 +1,117 @@
 ---
 layout: default
-title: Home
+nav: home
+network_canvas: true
+body_class: home
 ---
 
-<div class="hero">
-  <div class="eyebrow">CCNA &amp; Network+ made human</div>
-  <h1>Networking concepts that <span>actually stick</span></h1>
-  <p class="hero-sub">Plain-English guides, walkthroughs and video tutorials for the CCNA and Network+ exams — written by someone who's been in the weeds and come out the other side.</p>
-  <div class="hero-actions">
-    <a href="/articles/" class="btn-primary">&#9432; Start learning</a>
-    <a href="https://youtube.com/@eoinderry" class="btn-ghost" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-  </div>
-  <div class="hero-stats">
-    <div><span class="stat-num">0</span><span class="stat-label">Articles</span></div>
-    <div><span class="stat-num">0</span><span class="stat-label">Video guides</span></div>
-    <div><span class="stat-num">4</span><span class="stat-label">Topic tracks</span></div>
-  </div>
-</div>
+<section class="hero">
+  <canvas id="net-canvas" class="net-canvas" aria-hidden="true"></canvas>
+  <div class="hero-fade" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow eyebrow--led"><span class="led"></span>CCNA 200-301 &middot; article series in progress</p>
+      <h1 class="hero-title">
+        Networks,<br>
+        taught <em>properly</em>.
+      </h1>
+      <p class="hero-sub">
+        I'm Eoin Derry — a networking professional and trainer. I write
+        long-form articles that teach the CCNA the way I teach it in the
+        room: from first principles, with the <em>why</em> before the commands.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn--solid" href="{{ '/articles/' | relative_url }}">Read the series</a>
+        <a class="btn btn--ghost" href="{{ '/roadmap/' | relative_url }}">Explore the roadmap</a>
+      </div>
+    </div>
 
-<div class="section">
-  <div class="section-header">
-    <div class="section-title">Browse by topic</div>
+    <div class="hero-term" data-terminal aria-hidden="true">
+      <div class="term-bar">
+        <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+        <span class="term-title">console — SW1</span>
+        <span class="term-baud">9600 8N1</span>
+      </div>
+      <pre class="term-screen"><code data-term-output></code><span class="term-cursor"></span></pre>
+    </div>
   </div>
-  <div class="topic-grid">
-    <a href="/topics/fundamentals/" class="topic-card">
-      <span class="topic-icon">⬡</span>
-      <span class="topic-name">Network fundamentals</span>
-      <span class="topic-count">Coming soon</span>
-    </a>
-    <a href="/topics/routing-switching/" class="topic-card">
-      <span class="topic-icon">⇄</span>
-      <span class="topic-name">Routing &amp; switching</span>
-      <span class="topic-count">Coming soon</span>
-    </a>
-    <a href="/topics/security/" class="topic-card">
-      <span class="topic-icon">⬡</span>
-      <span class="topic-name">Security concepts</span>
-      <span class="topic-count">Coming soon</span>
-    </a>
-    <a href="/topics/cloud-wireless/" class="topic-card">
-      <span class="topic-icon">◈</span>
-      <span class="topic-name">Cloud &amp; wireless</span>
-      <span class="topic-count">Coming soon</span>
-    </a>
-  </div>
-</div>
+</section>
 
-<div class="newsletter">
-  <div>
-    <h3>New articles, straight to your inbox</h3>
-    <p>No spam — just new guides when they drop.</p>
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <p class="eyebrow">Latest from the series</p>
+        <h2 class="section-title">Recent articles</h2>
+      </div>
+      <a class="section-more" href="{{ '/articles/' | relative_url }}">All articles <span class="packet-dot" aria-hidden="true"></span></a>
+    </div>
+    <div class="card-grid card-grid--3">
+      {% for post in site.posts limit: 3 %}{% include post-card.html post=post %}{% endfor %}
+    </div>
   </div>
-  <div class="newsletter-form">
-    <input class="newsletter-input" type="email" placeholder="your@email.com" />
-    <button class="btn-primary">Subscribe</button>
+</section>
+
+<section class="section section--tinted">
+  <div class="wrap">
+    <div class="split reveal">
+      <div class="split-copy">
+        <p class="eyebrow">The signature feature</p>
+        <h2 class="section-title">One map for the whole CCNA</h2>
+        <p class="section-lead">
+          The 200-301 syllabus, laid out as a living topology. Every article
+          I publish attaches itself to its exam domain, so you can always
+          see what's covered, what's next, and where you are.
+        </p>
+        <a class="btn btn--ghost" href="{{ '/roadmap/' | relative_url }}">Open the roadmap</a>
+      </div>
+      <div class="split-art" aria-hidden="true">
+        <div class="mini-map">
+          {% for dom in site.data.roadmap %}
+          {% assign count = site.posts | where: "domain", dom.id | size %}
+          <a class="mini-node{% if count > 0 %} is-live{% endif %}" href="{{ '/roadmap/' | relative_url }}#{{ dom.id }}">
+            <span class="mini-num">{{ dom.number }}</span>
+            <span class="mini-name">{{ dom.title }}</span>
+            <span class="mini-count">{% if count > 0 %}{{ count }} article{% if count != 1 %}s{% endif %}{% else %}soon{% endif %}</span>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="split split--rev reveal">
+      <div class="split-copy">
+        <p class="eyebrow">Beyond the articles</p>
+        <h2 class="section-title">Training that sticks</h2>
+        <p class="section-lead">
+          Two decades of production networks, distilled into instructor-led
+          CCNA courses, corporate team training and one-to-one mentoring.
+          Delivered live, built around labs, and honest about what the job
+          actually involves.
+        </p>
+        <a class="btn btn--ghost" href="{{ '/training/' | relative_url }}">Work with me</a>
+      </div>
+      <div class="split-art" aria-hidden="true">
+        <ul class="cred-list">
+          <li><span class="cred-key">experience</span><span class="cred-val">20+ years in production networks</span></li>
+          <li><span class="cred-key">teaching</span><span class="cred-val">Hundreds of engineers trained</span></li>
+          <li><span class="cred-key">format</span><span class="cred-val">Live, lab-first, no death-by-slides</span></li>
+          <li><span class="cred-key">promise</span><span class="cred-val">You'll understand it, not memorise it</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--news">
+  <div class="wrap wrap--narrow reveal">
+    <p class="eyebrow">The wire</p>
+    <h2 class="section-title">One email per article. That's the deal.</h2>
+    <p class="section-lead">No digests, no "content", no selling your address. When a new piece ships, you'll know.</p>
+    {% include newsletter.html %}
+  </div>
+</section>

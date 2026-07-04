@@ -1,0 +1,14 @@
+{% if site.newsletter_action != "" %}
+<form class="news-form{% if include.compact %} news-form--compact{% endif %}" action="{{ site.newsletter_action }}" method="post" target="_blank">
+  <label class="visually-hidden" for="news-email{% if include.compact %}-f{% endif %}">Email address</label>
+  <input id="news-email{% if include.compact %}-f{% endif %}" type="email" name="email" required placeholder="you@example.com" autocomplete="email">
+  <button type="submit" class="btn btn--solid">Subscribe</button>
+</form>
+{% else %}
+<form class="news-form{% if include.compact %} news-form--compact{% endif %}" data-news-placeholder>
+  <label class="visually-hidden" for="news-email{% if include.compact %}-f{% endif %}">Email address</label>
+  <input id="news-email{% if include.compact %}-f{% endif %}" type="email" name="email" required placeholder="you@example.com" autocomplete="email">
+  <button type="submit" class="btn btn--solid">Subscribe</button>
+  <p class="news-note" hidden data-news-note>Almost — the newsletter service isn't wired up yet. Set <code>newsletter_action</code> in <code>_config.yml</code>.</p>
+</form>
+{% endif %}
