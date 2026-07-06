@@ -15,7 +15,7 @@ me what actually does: a clear mental model, a lab in front of you, and
 an instructor who has seen the failure modes for real. That's what I
 deliver — in person or remote, in English, with no death-by-PowerPoint.
 
-## CCNA 200-301 — instructor-led
+## CCNA Training
 
 A complete run through the syllabus for individuals or cohorts, following
 the same domain map you'll find on the [roadmap](/roadmap/). Every session
