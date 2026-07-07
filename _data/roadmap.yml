@@ -1,101 +1,102 @@
 # ------------------------------------------------------------------
-# CCNA 200-301 syllabus roadmap.
-# Each domain becomes a node on the /roadmap/ page. Articles attach
-# themselves to a domain via `domain: <id>` in their front matter.
+# The Excel path — six stages from first spreadsheet to power user.
+# Each stage becomes a node on the /roadmap/ page. Articles attach
+# themselves to a stage via `domain: <id>` in their front matter.
 # Edit topic lists freely — the page rebuilds itself.
 # ------------------------------------------------------------------
 
-- id: fundamentals
-  number: "1.0"
-  title: Network Fundamentals
-  weight: "20%"
+- id: foundations
+  number: "01"
+  title: Foundations
+  level: Beginner
   blurb: >-
-    The physics and logic underneath everything else — what a network
-    actually is, how data moves, and how addressing carves it up.
+    The habits that make everything else easy — how cells, ranges and
+    references really work, and the small set of moves you'll use ten
+    thousand times.
   topics:
-    - Network components — routers, switches, firewalls, APs
-    - Network topology architectures
-    - Physical interfaces and cabling
-    - TCP vs UDP
-    - IPv4 addressing and subnetting
-    - IPv6 addressing and prefix types
-    - Wireless principles
-    - Virtualisation fundamentals
-    - Switching concepts
+    - Cells, ranges and the grid mindset
+    - Relative vs absolute references — the $ sign, demystified
+    - Basic formulas — SUM, AVERAGE, MIN, MAX, COUNT
+    - The fill handle and copy-down logic
+    - Number formats vs the value underneath
+    - Keyboard habits that pay for themselves
+    - Freeze panes, split view and navigating big sheets
 
-- id: network-access
-  number: "2.0"
-  title: Network Access
-  weight: "20%"
+- id: working-with-data
+  number: "02"
+  title: Working with data
+  level: Beginner → improver
   blurb: >-
-    Layer 2 in the real world — VLANs, trunks, spanning tree, and the
-    switch behaviours every engineer gets tested on daily.
+    Real spreadsheets start as someone else's mess. This stage is about
+    taming it — structuring lists properly and cleaning imported data
+    without touching it by hand.
   topics:
-    - VLANs and inter-switch connectivity
-    - Trunking with 802.1Q
-    - EtherChannel (LACP)
-    - Rapid PVST+ spanning tree
-    - Cisco Wireless architectures and AP modes
-    - WLAN components and management access
+    - Format as Table — the feature that changes everything
+    - Sorting and filtering without wrecking your data
+    - Cleaning text — TRIM, CLEAN and PROPER
+    - Numbers and dates stored as text (and how to fix them)
+    - Text to Columns and Flash Fill
+    - Removing duplicates safely
+    - Paste Special — values, transpose and the multiply trick
 
-- id: ip-connectivity
-  number: "3.0"
-  title: IP Connectivity
-  weight: "25%"
+- id: formulas
+  number: "03"
+  title: Formulas that think
+  level: Improver
   blurb: >-
-    The largest slice of the exam — how routers decide, how routes are
-    learned, and how OSPF holds a network together.
+    Where Excel stops being a calculator and starts answering
+    questions — conditions, criteria and text logic that do the
+    thinking for you.
   topics:
-    - Routing table components
-    - Router forwarding decisions
-    - Static routing — IPv4 and IPv6
-    - Single-area OSPFv2
-    - First-hop redundancy protocols
+    - IF, IFS and nested logic done cleanly
+    - SUMIFS, COUNTIFS and AVERAGEIFS
+    - Text functions — LEFT, RIGHT, MID, TEXTBEFORE, TEXTAFTER
+    - Working with dates — TODAY, EOMONTH, NETWORKDAYS
+    - Error handling with IFERROR and IFNA
+    - Naming ranges so formulas read like sentences
 
-- id: ip-services
-  number: "4.0"
-  title: IP Services
-  weight: "10%"
+- id: lookups
+  number: "04"
+  title: Lookups & joining data
+  level: Improver → advanced
   blurb: >-
-    The supporting cast that production networks can't run without —
-    NAT, NTP, DHCP, DNS, SNMP, syslog and QoS.
+    The skill that separates users from power users — pulling the
+    right value from another table, reliably, every time.
   topics:
-    - NAT — inside/outside, static and PAT
-    - NTP in client/server mode
-    - DHCP and DNS roles
-    - SNMP and syslog
-    - Per-hop QoS behaviour
-    - SSH remote access
-    - TFTP and FTP roles
+    - XLOOKUP — the lookup you should learn first
+    - Why VLOOKUP breaks (and when you'll still meet it)
+    - INDEX and MATCH for full control
+    - Two-way lookups and lookup keys
+    - Matching messy keys between tables
+    - Spilled ranges and the # operator
 
-- id: security
-  number: "5.0"
-  title: Security Fundamentals
-  weight: "15%"
+- id: analysis
+  number: "05"
+  title: Analysis & reporting
+  level: Advanced
   blurb: >-
-    Threats, mitigation and hardening — from device access control and
-    ACLs to Layer 2 security and wireless authentication.
+    Turning a clean table into insight someone can act on —
+    PivotTables, charts that tell the truth, and reports that update
+    themselves.
   topics:
-    - Security concepts — threats, vulnerabilities, mitigation
-    - Device access control and passwords
-    - Site-to-site and remote-access VPNs
-    - Access control lists
-    - DHCP snooping and port security
-    - Authentication, authorisation, accounting (AAA)
-    - WPA2 / WPA3 wireless security
+    - PivotTables from first principles
+    - Grouping, slicers and pivot layouts
+    - Charts — choosing the right one, formatting it honestly
+    - Conditional formatting that highlights, not decorates
+    - Building a one-page dashboard
+    - Sharing workbooks without breaking them
 
-- id: automation
-  number: "6.0"
-  title: Automation & Programmability
-  weight: "10%"
+- id: power-tools
+  number: "06"
+  title: Power tools & automation
+  level: Power user
   blurb: >-
-    Where the industry is heading — controllers, APIs, configuration
-    management, and why the CLI is no longer the whole story.
+    The modern engine room — refreshable imports, formulas that spill,
+    and the first steps into automating the boring parts entirely.
   topics:
-    - Automation's impact on network management
-    - Controller-based vs traditional networking
-    - Software-defined architecture (overlay, underlay, fabric)
-    - REST APIs
-    - Configuration management tools
-    - JSON-encoded data
-    - Generative AI and machine ops
+    - Power Query — import, clean and refresh with one click
+    - Dynamic arrays — FILTER, SORT, UNIQUE
+    - LET and LAMBDA — formulas you can read
+    - Data validation and bulletproof inputs
+    - Recording your first macro
+    - When to leave Excel (and what for)

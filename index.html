@@ -1,38 +1,94 @@
 ---
 layout: default
 nav: home
-network_canvas: true
 body_class: home
 ---
 
 <section class="hero">
-  <canvas id="net-canvas" class="net-canvas" aria-hidden="true"></canvas>
-  <div class="hero-fade" aria-hidden="true"></div>
+  <div class="hero-grid-bg" aria-hidden="true">
+    <span class="ghost-cell gc-1"></span>
+    <span class="ghost-cell gc-2"></span>
+    <span class="ghost-cell gc-3"></span>
+    <span class="ghost-cell gc-4"></span>
+  </div>
   <div class="wrap hero-inner">
     <div class="hero-copy">
-      <p class="eyebrow eyebrow--led"><span class="led"></span>CCNA &middot; article series in progress</p>
+      <p class="eyebrow eyebrow--led"><span class="led"></span>Excel &middot; new guides in progress</p>
       <h1 class="hero-title">
-        Networks,<br>
-        taught <em>properly</em>.
+        Ordering<br>the <em>data</em>.
       </h1>
       <p class="hero-sub">
-        I'm Eoin Derry — a networking professional and trainer. I write
-        long-form articles that teach the CCNA the way I teach it in the
-        room: from first principles, with the <em>why</em> before the commands.
+        I'm Eoin Derry — an IT professional turned Excel teacher. I write
+        long-form guides that turn messy spreadsheets into clear answers:
+        the <em>why</em> before the how, every time.
       </p>
+      <div class="hero-news">
+        {% include newsletter.html %}
+        <p class="hero-news-note">One email per guide. No digests, no selling your address.</p>
+      </div>
       <div class="hero-actions">
-        <a class="btn btn--solid" href="{{ '/articles/' | relative_url }}">Read the series</a>
-        <a class="btn btn--ghost" href="{{ '/roadmap/' | relative_url }}">Explore the roadmap</a>
+        <a class="btn btn--ghost" href="{{ '/articles/' | relative_url }}">Read the guides</a>
+        <a class="btn btn--ghost" href="{{ '/roadmap/' | relative_url }}">See the path</a>
       </div>
     </div>
 
-    <div class="hero-term" data-terminal aria-hidden="true">
-      <div class="term-bar">
-        <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
-        <span class="term-title">console — SW1</span>
-        <span class="term-baud">9600 8N1</span>
+    <div class="hero-sheet" data-sheet aria-hidden="true">
+      <div class="sheet-titlebar">
+        <span class="sheet-dot"></span><span class="sheet-dot"></span><span class="sheet-dot"></span>
+        <span class="sheet-title">q3-export-final-FINAL.xlsx</span>
+        <span class="sheet-saved" data-sheet-saved>Editing</span>
       </div>
-      <pre class="term-screen"><code data-term-output></code><span class="term-cursor"></span></pre>
+      <div class="sheet-formulabar">
+        <span class="fb-cell" data-fb-cell>A2</span>
+        <span class="fb-fx">fx</span>
+        <code class="fb-input" data-fb-input></code><span class="fb-cursor" data-fb-cursor></span>
+      </div>
+      <table class="sheet">
+        <thead>
+          <tr><th class="s-corner"></th><th>A</th><th>B</th><th>C</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>1</th><td class="s-head">Customer</td><td class="s-head">Region</td><td class="s-head s-num">Amount</td></tr>
+          <tr data-sheet-row><th>2</th><td>&nbsp;&nbsp;niamh BYRNE</td><td>dub</td><td class="s-num">915</td></tr>
+          <tr data-sheet-row><th>3</th><td>SEAN o'brien&nbsp;&nbsp;</td><td>Cork&nbsp;</td><td class="s-num">1480</td></tr>
+          <tr data-sheet-row><th>4</th><td>aoife&nbsp;&nbsp;&nbsp;murphy</td><td>GALWAY</td><td class="s-num">1240</td></tr>
+          <tr data-sheet-row><th>5</th><td>&nbsp;PADRAIG kelly</td><td>dub.</td><td class="s-num">770</td></tr>
+          <tr data-sheet-row><th>6</th><td>ciara&nbsp;WALSH&nbsp;&nbsp;</td><td>corrk</td><td class="s-num">1105</td></tr>
+          <tr class="s-total"><th>7</th><td>Total</td><td></td><td class="s-num" data-sheet-total></td></tr>
+        </tbody>
+      </table>
+      <div class="sheet-status">
+        <span data-sheet-status>Ready</span>
+        <span class="sheet-zoom">100%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tinted">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <p class="eyebrow">Start here</p>
+        <h2 class="section-title">The path, from first sheet to power user</h2>
+      </div>
+      <a class="section-more" href="{{ '/roadmap/' | relative_url }}">Open the full path <span class="go-cell" aria-hidden="true"></span></a>
+    </div>
+    <p class="section-lead reveal">
+      Excel isn't a pile of tricks — it's six skills, in order. Every guide
+      I publish attaches itself to its stage, so you can always see what's
+      covered, what's next, and where you are.
+    </p>
+    <div class="path-grid">
+      {% for dom in site.data.roadmap %}
+      {% assign count = site.posts | where: "domain", dom.id | size %}
+      <a class="path-node reveal{% if count > 0 %} is-live{% endif %}" href="{{ '/roadmap/' | relative_url }}#{{ dom.id }}">
+        <span class="path-num">{{ dom.number }}</span>
+        <span class="path-name">{{ dom.title }}</span>
+        <span class="path-level">{{ dom.level }}</span>
+        <span class="path-count">{% if count > 0 %}{{ count }} guide{% if count != 1 %}s{% endif %}{% else %}soon{% endif %}</span>
+      </a>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -41,10 +97,10 @@ body_class: home
   <div class="wrap">
     <div class="section-head reveal">
       <div>
-        <p class="eyebrow">Latest from the series</p>
-        <h2 class="section-title">Recent articles</h2>
+        <p class="eyebrow">Latest guides</p>
+        <h2 class="section-title">Recently published</h2>
       </div>
-      <a class="section-more" href="{{ '/articles/' | relative_url }}">All articles <span class="packet-dot" aria-hidden="true"></span></a>
+      <a class="section-more" href="{{ '/articles/' | relative_url }}">All guides <span class="go-cell" aria-hidden="true"></span></a>
     </div>
     <div class="card-grid card-grid--3">
       {% for post in site.posts limit: 3 %}{% include post-card.html post=post %}{% endfor %}
@@ -56,25 +112,28 @@ body_class: home
   <div class="wrap">
     <div class="split reveal">
       <div class="split-copy">
-        <p class="eyebrow">The signature feature</p>
-        <h2 class="section-title">One map for the whole CCNA</h2>
+        <p class="eyebrow">On video</p>
+        <h2 class="section-title">The channel is warming up</h2>
         <p class="section-lead">
-          The CCNA syllabus, laid out as a living topology. Every article
-          I publish attaches itself to its exam domain, so you can always
-          see what's covered, what's next, and where you are.
+          The same teaching, on screen — short, careful videos where you
+          watch the spreadsheet come to order in real time. Subscribe now
+          and you'll be there for video one.
         </p>
-        <a class="btn btn--ghost" href="{{ '/roadmap/' | relative_url }}">Open the roadmap</a>
+        <a class="btn btn--solid btn--yt" href="{{ site.social.youtube }}" rel="me noopener" target="_blank">
+          <svg width="20" height="14" viewBox="0 0 24 17" fill="currentColor" aria-hidden="true"><path d="M23.5 2.66A3 3 0 0 0 21.4.53C19.53 0 12 0 12 0S4.47 0 2.6.53A3 3 0 0 0 .5 2.66 31.4 31.4 0 0 0 0 8.5a31.4 31.4 0 0 0 .5 5.84 3 3 0 0 0 2.1 2.13c1.87.53 9.4.53 9.4.53s7.53 0 9.4-.53a3 3 0 0 0 2.1-2.13A31.4 31.4 0 0 0 24 8.5a31.4 31.4 0 0 0-.5-5.84zM9.6 12.14V4.86L15.86 8.5 9.6 12.14z"/></svg>
+          Subscribe on YouTube
+        </a>
       </div>
       <div class="split-art" aria-hidden="true">
-        <div class="mini-map">
-          {% for dom in site.data.roadmap %}
-          {% assign count = site.posts | where: "domain", dom.id | size %}
-          <a class="mini-node{% if count > 0 %} is-live{% endif %}" href="{{ '/roadmap/' | relative_url }}#{{ dom.id }}">
-            <span class="mini-num">{{ dom.number }}</span>
-            <span class="mini-name">{{ dom.title }}</span>
-            <span class="mini-count">{% if count > 0 %}{{ count }} article{% if count != 1 %}s{% endif %}{% else %}soon{% endif %}</span>
-          </a>
-          {% endfor %}
+        <div class="video-card">
+          <div class="video-thumb">
+            <span class="video-grid"></span>
+            <span class="video-play"></span>
+          </div>
+          <div class="video-meta">
+            <span class="video-title">Episode 01 — coming soon</span>
+            <span class="video-sub">eoinderry &middot; Excel, from first principles</span>
+          </div>
         </div>
       </div>
     </div>
@@ -85,21 +144,21 @@ body_class: home
   <div class="wrap">
     <div class="split split--rev reveal">
       <div class="split-copy">
-        <p class="eyebrow">Beyond the articles</p>
-        <h2 class="section-title">Training that sticks</h2>
+        <p class="eyebrow">Who's writing this</p>
+        <h2 class="section-title">An IT professional turned Excel teacher</h2>
         <p class="section-lead">
-          Two decades of production networks, distilled into instructor-led
-          CCNA courses, corporate team training and one-to-one mentoring.
-          Delivered live, built around labs, and honest about what the job
-          actually involves.
+          Twenty years keeping infrastructure honest taught me one thing:
+          in every office, in every job, the real system of record was a
+          spreadsheet. I teach Excel the way I learned to run networks —
+          from first principles, carefully, so it stays understood.
         </p>
-        <a class="btn btn--ghost" href="{{ '/training/' | relative_url }}">Work with me</a>
+        <a class="btn btn--ghost" href="{{ '/about/' | relative_url }}">More about me</a>
       </div>
       <div class="split-art" aria-hidden="true">
         <ul class="cred-list">
-          <li><span class="cred-key">experience</span><span class="cred-val">20+ years in production networks</span></li>
-          <li><span class="cred-key">teaching</span><span class="cred-val">Hundreds of engineers trained</span></li>
-          <li><span class="cred-key">format</span><span class="cred-val">Live, lab-first, no death-by-slides</span></li>
+          <li><span class="cred-key">background</span><span class="cred-val">20+ years in professional IT</span></li>
+          <li><span class="cred-key">teaching</span><span class="cred-val">Hundreds of professionals trained</span></li>
+          <li><span class="cred-key">method</span><span class="cred-val">The why before the how</span></li>
           <li><span class="cred-key">promise</span><span class="cred-val">You'll understand it, not memorise it</span></li>
         </ul>
       </div>
@@ -109,8 +168,8 @@ body_class: home
 
 <section class="section section--news">
   <div class="wrap wrap--narrow reveal">
-    <p class="eyebrow">The wire</p>
-    <h2 class="section-title">One email per article. That's the deal.</h2>
+    <p class="eyebrow">The ledger</p>
+    <h2 class="section-title">One email per guide. That's the deal.</h2>
     <p class="section-lead">No digests, no "content", no selling your address. When a new piece ships, you'll know.</p>
     {% include newsletter.html %}
   </div>

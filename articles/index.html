@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Articles
+title: Guides
 nav: articles
 permalink: /articles/
 ---
@@ -8,11 +8,10 @@ permalink: /articles/
 <section class="page-head page-head--list">
   <div class="wrap">
     <p class="eyebrow">The series</p>
-    <h1 class="page-title">Articles</h1>
+    <h1 class="page-title">Guides</h1>
     <p class="article-standfirst">
-      Long-form pieces on the CCNA 200-301 syllabus — and the occasional
-      detour into the networking craft around it. Written to be read
-      slowly and understood once.
+      Long-form pieces on Excel, written to be read slowly and understood
+      once — from taming a messy export to formulas that think for you.
     </p>
   </div>
   <div class="article-rule" aria-hidden="true"><span class="rule-packet"></span></div>
@@ -20,7 +19,7 @@ permalink: /articles/
 
 <section class="section section--flush">
   <div class="wrap">
-    <div class="filter-row" role="group" aria-label="Filter by exam domain">
+    <div class="filter-row" role="group" aria-label="Filter by stage of the path">
       <button class="chip chip--filter is-active" data-filter="all">All</button>
       {% for dom in site.data.roadmap %}
       {% assign count = site.posts | where: "domain", dom.id | size %}
@@ -34,6 +33,6 @@ permalink: /articles/
       {% for post in site.posts %}{% include post-card.html post=post %}{% endfor %}
     </div>
 
-    <p class="filter-empty" hidden data-filter-empty>Nothing here yet — this domain is next on the writing desk.</p>
+    <p class="filter-empty" hidden data-filter-empty>Nothing here yet — this stage is next on the writing desk.</p>
   </div>
 </section>

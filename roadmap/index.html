@@ -1,19 +1,19 @@
 ---
 layout: default
-title: CCNA Roadmap
+title: The Path
 nav: roadmap
 permalink: /roadmap/
-description: The full CCNA syllabus as a living map — every exam domain, every topic, linked to articles as they're written.
+description: Excel as six skills, in order — from first spreadsheet to power user. Every guide attaches to its stage, so you can always see what's next.
 ---
 
 <section class="page-head page-head--list">
   <div class="wrap">
-    <p class="eyebrow">CCNA</p>
-    <h1 class="page-title">The syllabus, as a map</h1>
+    <p class="eyebrow">Excel, in order</p>
+    <h1 class="page-title">The path</h1>
     <p class="article-standfirst">
-      Six exam domains, weighted the way Cisco weights them. Each node
-      fills in as articles are published — bookmark this page and watch
-      the network light up.
+      Excel isn't a pile of tricks — it's six skills, learned in order.
+      Each stage fills in as guides are published. Bookmark this page and
+      watch the sheet come to order.
     </p>
   </div>
   <div class="article-rule" aria-hidden="true"><span class="rule-packet"></span></div>
@@ -33,26 +33,26 @@ description: The full CCNA syllabus as a living map — every exam domain, every
           <header class="road-head">
             <span class="road-num">{{ dom.number }}</span>
             <h2 class="road-title">{{ dom.title }}</h2>
-            <span class="chip chip--weight" title="Share of the CCNA exam">{{ dom.weight }} of exam</span>
+            <span class="chip chip--weight" title="Who this stage is for">{{ dom.level }}</span>
           </header>
           <p class="road-blurb">{{ dom.blurb }}</p>
 
           <details class="road-topics">
-            <summary>Syllabus topics <span class="road-topic-count">{{ dom.topics | size }}</span></summary>
+            <summary>What's in this stage <span class="road-topic-count">{{ dom.topics | size }}</span></summary>
             <ul>
               {% for topic in dom.topics %}<li>{{ topic }}</li>{% endfor %}
             </ul>
           </details>
 
           {% if posts.size > 0 %}
-          <h3 class="road-sub">Articles in this domain</h3>
+          <h3 class="road-sub">Guides in this stage</h3>
           <ul class="road-posts">
             {% for p in posts %}
-            <li><a href="{{ p.url | relative_url }}"><span class="packet-dot" aria-hidden="true"></span>{{ p.title }}</a></li>
+            <li><a href="{{ p.url | relative_url }}"><span class="go-cell" aria-hidden="true"></span>{{ p.title }}</a></li>
             {% endfor %}
           </ul>
           {% else %}
-          <p class="road-soon"><span class="led led--amber"></span>Articles in progress — subscribe below to catch them.</p>
+          <p class="road-soon"><span class="led led--amber"></span>Guides in progress — subscribe below to catch them.</p>
           {% endif %}
         </div>
       </section>
@@ -60,8 +60,8 @@ description: The full CCNA syllabus as a living map — every exam domain, every
     </div>
 
     <div class="wrap--narrow foot-news reveal">
-      <h2 class="foot-heading">Watch the map light up</h2>
-      <p>Each new article switches its domain from amber to live. One email per article.</p>
+      <h2 class="foot-heading">Watch the path fill in</h2>
+      <p>Each new guide switches its stage from amber to live. One email per guide.</p>
       {% include newsletter.html %}
     </div>
   </div>

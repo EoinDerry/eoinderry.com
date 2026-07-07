@@ -1,17 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 104 82" role="img" aria-label="Eoin Derry mark">
-  <!-- eoinderry.com — primary mark, for dark backgrounds -->
-  <g fill="none" stroke="#e8edf4" stroke-width="7" stroke-linecap="round">
-    <path d="M54 50 A22 22 0 1 0 52.4 58.2"/>
-    <path d="M10 50 H54"/>
-    <path d="M94 37.35 A22 22 0 1 0 94 62.65"/>
-    <path d="M94 10 V72"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Eoin Derry monogram">
+  <!-- ED monogram built from spreadsheet cells. Accent: #0E7A4F, highlight cell: #6FC39A -->
+  <g fill="#0E7A4F">
+    <!-- E -->
+    <rect x="14" y="24" width="8" height="8" rx="2"/>
+    <rect x="24" y="24" width="8" height="8" rx="2"/>
+    <rect x="34" y="24" width="8" height="8" rx="2" fill="#6FC39A"/>
+    <rect x="14" y="34" width="8" height="8" rx="2"/>
+    <rect x="14" y="44" width="8" height="8" rx="2"/>
+    <rect x="24" y="44" width="8" height="8" rx="2"/>
+    <rect x="34" y="44" width="8" height="8" rx="2"/>
+    <rect x="14" y="54" width="8" height="8" rx="2"/>
+    <rect x="14" y="64" width="8" height="8" rx="2"/>
+    <rect x="24" y="64" width="8" height="8" rx="2"/>
+    <rect x="34" y="64" width="8" height="8" rx="2"/>
+    <!-- D -->
+    <rect x="54" y="24" width="8" height="8" rx="2"/>
+    <rect x="64" y="24" width="8" height="8" rx="2"/>
+    <rect x="54" y="34" width="8" height="8" rx="2"/>
+    <rect x="74" y="34" width="8" height="8" rx="2"/>
+    <rect x="54" y="44" width="8" height="8" rx="2"/>
+    <rect x="74" y="44" width="8" height="8" rx="2"/>
+    <rect x="54" y="54" width="8" height="8" rx="2"/>
+    <rect x="74" y="54" width="8" height="8" rx="2"/>
+    <rect x="54" y="64" width="8" height="8" rx="2"/>
+    <rect x="64" y="64" width="8" height="8" rx="2"/>
   </g>
-  <g fill="#e8edf4">
-    <circle cx="10" cy="50" r="6.5"/>
-    <circle cx="54" cy="50" r="6.5"/>
-    <circle cx="94" cy="37.35" r="6.5"/>
-    <circle cx="94" cy="10" r="6.5"/>
-    <circle cx="94" cy="72" r="6.5"/>
-  </g>
-  <circle fill="#35e0d0" cx="44.6" cy="68" r="5.5"/>
 </svg>

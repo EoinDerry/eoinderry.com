@@ -1,99 +1,69 @@
 # EoinDerry.com
 
-A bespoke, dark, network-themed static site for **eoinderry.com** —
+A bespoke, light, spreadsheet-themed static site for **eoinderry.com** —
 built with Jekyll so GitHub Pages builds and hosts it (with free SSL)
 every time you push. All written content lives in plain Markdown.
 
----
-
-## 1. Put it live on GitHub Pages (one-time, ~10 minutes)
-
-1. **Create a repository** on GitHub called `eoinderry.com`
-   (any name works, but this keeps it tidy).
-2. **Upload everything in this folder** to the root of that repository
-   (or `git init`, commit, and push).
-3. In the repository: **Settings → Pages** →
-   - *Source*: **Deploy from a branch**
-   - *Branch*: `main`, folder `/ (root)` → **Save**
-4. Wait a minute or two. Your site is now live at
-   `https://<your-username>.github.io/eoinderry.com/`.
-
-### Connect the eoinderry.com domain
-
-1. Still in **Settings → Pages**, enter `eoinderry.com` under
-   *Custom domain* and save. (The `CNAME` file in this folder keeps
-   that setting across future pushes.)
-2. At your domain registrar, create these DNS records:
-
-   | Type  | Host | Value |
-   |-------|------|----------------------|
-   | A     | @    | `185.199.108.153` |
-   | A     | @    | `185.199.109.153` |
-   | A     | @    | `185.199.110.153` |
-   | A     | @    | `185.199.111.153` |
-   | CNAME | www  | `<your-username>.github.io` |
-
-3. Back in **Settings → Pages**, once the DNS check passes, tick
-   **Enforce HTTPS**. GitHub provisions the SSL certificate
-   automatically (it can take up to an hour the first time).
-
-That's it. From now on, every push to `main` republishes the site.
+> The previous CCNA/networking site is fully preserved on the
+> `archive/ccna-site-2026-07` branch — nothing was lost in the redesign.
 
 ---
 
-## 2. Writing an article (the everyday workflow)
+## 1. Writing a guide (the everyday workflow)
 
 Create one Markdown file in `_posts/`, named
 `YYYY-MM-DD-short-slug.md`:
 
 ```markdown
 ---
-title: "VLANs: Fences for Floods"
+title: "Format as Table: the feature that changes everything"
 description: A one-sentence standfirst shown under the title and on cards.
-date: 2026-07-15
-domain: network-access
+date: 2026-07-21
+domain: working-with-data
 ---
 
-Your article, in ordinary Markdown...
+Your guide, in ordinary Markdown...
 ```
 
-Push it. The article appears on the homepage, the articles page, the
-RSS feed — **and attaches itself to its exam domain on the CCNA
-roadmap**, switching that node from amber to live.
+Push it. The guide appears on the homepage, the guides page, the RSS
+feed — **and attaches itself to its stage on the Excel path**,
+switching that stage from amber to live.
 
 `domain` must be one of the ids in `_data/roadmap.yml`:
 
-| id | Domain |
-|----|--------|
-| `fundamentals` | 1.0 Network Fundamentals |
-| `network-access` | 2.0 Network Access |
-| `ip-connectivity` | 3.0 IP Connectivity |
-| `ip-services` | 4.0 IP Services |
-| `security` | 5.0 Security Fundamentals |
-| `automation` | 6.0 Automation & Programmability |
+| id | Stage |
+|----|-------|
+| `foundations` | 01 Foundations |
+| `working-with-data` | 02 Working with data |
+| `formulas` | 03 Formulas that think |
+| `lookups` | 04 Lookups & joining data |
+| `analysis` | 05 Analysis & reporting |
+| `power-tools` | 06 Power tools & automation |
 
-For content adjacent to the syllabus, omit `domain` — the article is
+For content that doesn't fit a stage, omit `domain` — the guide is
 labelled "Field notes" instead.
 
-Code blocks with CLI output look best fenced as plain text:
+Fenced code blocks render as Excel formula bars (with the *fx* gutter):
 
 <pre>
 ```
-SW1# show ip interface brief
+=XLOOKUP(B2, Customers!A:A, Customers!C:C)
 ```
 </pre>
 
-## 3. Editing everything else
+Markdown tables render styled like a clean sheet — use them freely.
+
+## 2. Editing everything else
 
 | To change… | Edit… |
 |------------|-------|
 | Site title, tagline, email, social links | `_config.yml` |
 | About page | `about/index.md` |
-| Training page | `training/index.md` |
-| CCNA domains & topic lists | `_data/roadmap.yml` |
+| Excel path stages & topic lists | `_data/roadmap.yml` |
 | Homepage sections | `index.html` |
 | Colours, fonts, spacing | `assets/css/main.css` (tokens at the top) |
-| Hero terminal script | `assets/js/main.js` (the `script` array) |
+| Hero spreadsheet animation | `assets/js/main.js` (the `CLEAN` array and `run` sequence) |
+| Logo / brand assets | `assets/brand/` (see its README) |
 
 ### Newsletter
 
@@ -102,9 +72,12 @@ The signup forms are wired but dormant. Sign up with a provider
 URL, and paste it into `newsletter_action` in `_config.yml`. Every form
 on the site activates at once.
 
----
+### YouTube
 
-## 4. Running the site locally (optional)
+The header link, homepage section and footer all read the channel URL
+from `social.youtube` in `_config.yml`.
+
+## 3. Running the site locally (optional)
 
 You never *need* to — GitHub builds it for you — but for instant
 previews while writing:
@@ -116,17 +89,19 @@ bundle exec jekyll serve --livereload
 # → http://localhost:4000
 ```
 
----
-
-## 5. Design notes (for future you)
+## 4. Design notes (for future you)
 
 - **Fonts:** Bricolage Grotesque (display), Instrument Sans (body),
-  IBM Plex Mono (labels/code) — loaded from Google Fonts in
+  IBM Plex Mono (labels/formulas) — loaded from Google Fonts in
   `_layouts/default.html`.
-- **Accent:** `--accent: #35e0d0` in `main.css`. Change one token and
-  the packets, LEDs, links and buttons all follow.
-- **Animations:** the hero topology is `assets/js/network.js` (canvas,
-  dependency-free, pauses off-screen). All motion respects
-  `prefers-reduced-motion`.
+- **Palette:** design tokens at the top of `main.css`. Brand green is
+  `--accent: #0E7A4F`; change one token and the buttons, links, LEDs
+  and logo all follow. The palette was chosen to survive a future
+  pivot toward Microsoft 365 or personal-finance content.
+- **Logo:** the ED cell monogram (letters built from spreadsheet
+  cells) lives in `assets/brand/` as SVG in every needed variant.
+- **Animations:** the hero spreadsheet ("ordering the data") is plain
+  DOM + timeouts in `main.js`; scroll reveals use IntersectionObserver.
+  All motion respects `prefers-reduced-motion`.
 - **No build tooling, no npm, no frameworks.** Plain CSS and JS on
   purpose — nothing to rot.

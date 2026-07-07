@@ -31,7 +31,7 @@ layout: default
       {% if dom %}
       <a class="foot-domain" href="{{ '/roadmap/' | relative_url }}#{{ dom.id }}">
         <span class="chip chip--domain">{{ dom.number }} {{ dom.title }}</span>
-        <span>See every article in this domain on the roadmap</span>
+        <span>See every guide in this stage of the path</span>
       </a>
       {% endif %}
 
@@ -44,8 +44,8 @@ layout: default
       {% endif %}
 
       <div class="foot-news">
-        <h2 class="foot-heading">New articles, straight to you</h2>
-        <p>The series grows steadily. Get one email per article — nothing else.</p>
+        <h2 class="foot-heading">New guides, straight to you</h2>
+        <p>The series grows steadily. Get one email per guide — nothing else.</p>
         {% include newsletter.html %}
       </div>
     </div>

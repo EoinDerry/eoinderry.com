@@ -3,57 +3,58 @@ layout: page
 title: About Eoin
 nav: about
 permalink: /about/
-eyebrow: The person behind the packets
+eyebrow: The person behind the cells
 standfirst: >-
-  Networking professional, trainer, and the sort of person who genuinely
-  enjoys explaining spanning tree at parties.
-description: About Eoin Derry — IT networking professional and CCNA trainer.
+  An IT professional turned Excel teacher — and the sort of person who
+  genuinely enjoys explaining lookup functions at parties.
+description: About Eoin Derry — IT professional turned Excel teacher.
 ---
 
-I've spent my career in and around production networks — designing them,
-breaking them (occasionally on purpose), fixing them at 3am, and, for a
-long time now, teaching other people how they really work.
+I've spent over twenty years in professional IT — keeping infrastructure
+running, fixing things at 3am, and teaching other people how systems
+really work. And in every job, in every office, one truth kept
+reappearing: whatever the official system was, the *real* work happened
+in a spreadsheet.
 
-Somewhere along the way I noticed a pattern. The engineers who struggled
-weren't short of information — they were drowning in it. Videos, dumps,
-flashcards, acronyms. What they were missing was the *model*: the small
-set of ideas that make the whole CCNA syllabus hang together, so that
-commands become obvious instead of memorised.
+Budgets, rosters, stock counts, project plans, the file that one person
+in accounts guards with their life — it's Excel all the way down. Most
+people were never actually taught it. They inherited a workbook, learned
+three tricks under pressure, and have been quietly fighting their data
+ever since.
 
-That model is what this site is for.
+That's what this site is for.
 
-## What you'll find here
+## How I teach
 
-**The article series.** Long-form pieces working through the CCNA 200-301
-syllabus, mapped domain by domain on the [roadmap](/roadmap/). They're
-written the way I teach in the room: the *why* first, then the *how*,
-then the CLI. No filler, no "in this article we will discuss".
+Years in infrastructure taught me a particular way of learning things:
+**understand the system before you memorise the commands.** Excel rewards
+exactly the same approach. If you understand what a cell reference really
+is, the `$` sign stops being folklore. If you understand what makes a
+proper table, half of your formula problems never happen at all.
 
-**Adjacent craft.** The exam is a milestone, not the destination. Expect
-detours into the things the syllabus can't test — reading a network you
-didn't build, troubleshooting under pressure, and how to be the calm
-person in the incident call.
+So every guide here works the same way:
 
-## How I work
+- **The why before the how.** You'll know *why* the technique works, so
+  you can adapt it when your data looks different — and it always does.
+- **Real, messy examples.** Not tidy textbook data. Exports with trailing
+  spaces, dates stored as text, and names in the wrong case — the stuff
+  that actually lands in your inbox at 4:45pm.
+- **In order.** The guides attach to [the path](/roadmap/) — six stages
+  from first spreadsheet to power user — so you always know where you
+  are and what's next.
 
-- **First principles over folklore.** If I tell you a switch floods a
-  frame, I'll show you *why* flooding is the only sensible thing it can do.
-- **Labs over lectures.** Everything I teach can be built, broken and
-  observed on kit you can run at home.
-- **Plain language.** Networking has enough jargon. I use it precisely,
-  and I introduce it only after the idea it names makes sense.
+## What's here now, and what's coming
 
-## The short CV
+The written guides are the foundation, and new ones ship steadily — one
+email per guide if you [subscribe](/#main). A YouTube channel is warming
+up alongside, teaching the same material on screen. Later, structured
+courses and workbook downloads will join them.
 
-- 20+ years across enterprise and service-provider networking
-- Instructor and mentor to hundreds of engineers, from first-job
-  helpdesk to senior ops
-- Specialised in routing & switching, network design, and making
-  the CCNA syllabus feel small
+If there's a spreadsheet problem you keep hitting, I'd genuinely like to
+hear about it — the best guides start as someone's real 4:45pm export.
 
-If you'd like me to train your team — or you — the details are on the
-[training page](/training/). If you just want to read, start with the
-[latest articles](/articles/); the series is written to be joined at
-any point.
+## Say hello
 
-*— Eoin*
+The inbox is open: [{{ site.author.email }}](mailto:{{ site.author.email }}).
+You'll also find me on [YouTube]({{ site.social.youtube }}) and
+[LinkedIn]({{ site.social.linkedin }}).
