@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:#FBFAF7; --ink:#1C2823; --soft:#5A655E; --line:#E6E4D9; --grid:#ECEAE0;
+    --green:#0E7A4F; --deep:#0A5C3B; --dgreen:#0F2C20; --mint:#A8DEC5; --tint:#EAF4EE; --tint2:#DCEDE4;
+  }
+  * { margin:0; box-sizing:border-box; }
+  body { background:#888; font-family:'Bricolage Grotesque',sans-serif; }
+  .thumb {
+    width:1280px; height:720px; position:relative; overflow:hidden;
+    background:
+      repeating-linear-gradient(0deg, transparent 0 71px, var(--grid) 71px 72px),
+      repeating-linear-gradient(90deg, transparent 0 71px, var(--grid) 71px 72px),
+      var(--paper);
+    margin-bottom:24px; padding:64px 72px;
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .eyebrow { font:600 26px 'IBM Plex Mono',monospace; letter-spacing:.14em; color:var(--green); }
+  .hook { font-weight:800; font-size:118px; line-height:1.0; letter-spacing:-0.03em; color:var(--ink); max-width:760px; }
+  .hook em { font-style:normal; color:var(--green); }
+  .hook .u { box-shadow: inset 0 -14px 0 var(--mint); }
+  .brandrow { display:flex; align-items:center; gap:18px; font:500 30px 'IBM Plex Mono',monospace; color:var(--soft); }
+  .brandrow b { color:var(--ink); font-weight:600; }
+  /* motif card */
+  .motif {
+    position:absolute; right:72px; top:50%; transform:translateY(-50%) rotate(1.5deg);
+    background:#fff; border:2px solid var(--line); border-radius:24px;
+    box-shadow:0 24px 60px rgba(28,40,35,.16); padding:36px 42px;
+    font:500 40px 'IBM Plex Mono',monospace; color:var(--deep);
+  }
+  .motif .cellref { color:var(--soft); font-size:28px; display:block; margin-bottom:14px; }
+  .chipnum {
+    position:absolute; top:64px; right:72px;
+    font:600 28px 'IBM Plex Mono',monospace; color:var(--soft);
+    border:2px solid var(--line); background:#fff; border-radius:999px; padding:10px 26px;
+  }
+  /* dark-green money variant */
+  .thumb.money {
+    background:
+      repeating-linear-gradient(0deg, transparent 0 71px, rgba(255,255,255,.07) 71px 72px),
+      repeating-linear-gradient(90deg, transparent 0 71px, rgba(255,255,255,.07) 71px 72px),
+      var(--dgreen);
+  }
+  .money .hook { color:#F2F6F1; }
+  .money .hook em { color:var(--mint); }
+  .money .hook .u { box-shadow: inset 0 -14px 0 rgba(168,222,197,.35); }
+  .money .eyebrow { color:var(--mint); }
+  .money .brandrow { color:#9DB3A6; } .money .brandrow b { color:#F2F6F1; }
+  .money .motif { background:#123B2B; border-color:#1E4A37; color:var(--mint); }
+  .money .chipnum { background:#123B2B; border-color:#1E4A37; color:var(--mint); }
+  /* dark ink M365 variant */
+  .thumb.m365 {
+    background:
+      repeating-linear-gradient(0deg, transparent 0 71px, rgba(255,255,255,.06) 71px 72px),
+      repeating-linear-gradient(90deg, transparent 0 71px, rgba(255,255,255,.06) 71px 72px),
+      #171F1B;
+  }
+  .m365 .hook { color:#F2F6F1; }
+  .m365 .hook em { color:var(--mint); }
+  .m365 .eyebrow { color:var(--mint); }
+  .m365 .brandrow { color:#8A948D; } .m365 .brandrow b { color:#F2F6F1; }
+  .m365 .motif { background:#212B26; border-color:#2E3A34; color:var(--mint); }
+  .m365 .chipnum { background:#212B26; border-color:#2E3A34; color:var(--mint); }
+
+  .mark { display:inline-block; }
+  /* extra motif styles */
+  .sheetmini { border-collapse:collapse; font:500 30px 'IBM Plex Mono',monospace; }
+  .sheetmini td { border:2px solid var(--line); padding:14px 24px; color:var(--soft); background:#fff; }
+  .sheetmini .hd td { background:var(--tint); color:var(--ink); font-weight:600; }
+  .sheetmini .strike { color:#B3543F; text-decoration:line-through; }
+  .sheetmini .ok { color:var(--deep); font-weight:600; }
+  .arrow { font-size:44px; color:var(--green); text-align:center; padding:6px 0; }
+  .pillcol { display:flex; flex-direction:column; gap:16px; }
+  .pill { font:600 30px 'IBM Plex Mono',monospace; background:#123B2B; border:2px solid #1E4A37;
+          color:var(--mint); border-radius:16px; padding:16px 28px; }
+  .pill small { color:#9DB3A6; font-weight:400; }
+</style>
+</head>
+<body>
+
+<!-- 1 · references -->
+<div class="thumb" id="t01">
+  <div class="eyebrow">EXCEL · 01 FOUNDATIONS</div>
+  <div class="hook">The <em>$ sign</em>,<br>finally<br>explained.</div>
+  <div class="motif"><span class="cellref">every row → same cell</span>=C2*<em style="color:var(--green);font-weight:600">$E$1</em></div>
+  <div class="brandrow"><svg class="mark" width="44" height="44" viewBox="0 0 96 96"><g fill="#0E7A4F"><rect x="14" y="24" width="8" height="8" rx="2"/><rect x="24" y="24" width="8" height="8" rx="2"/><rect x="34" y="24" width="8" height="8" rx="2" fill="#6FC39A"/><rect x="14" y="34" width="8" height="8" rx="2"/><rect x="14" y="44" width="8" height="8" rx="2"/><rect x="24" y="44" width="8" height="8" rx="2"/><rect x="34" y="44" width="8" height="8" rx="2"/><rect x="14" y="54" width="8" height="8" rx="2"/><rect x="14" y="64" width="8" height="8" rx="2"/><rect x="24" y="64" width="8" height="8" rx="2"/><rect x="34" y="64" width="8" height="8" rx="2"/><rect x="54" y="24" width="8" height="8" rx="2"/><rect x="64" y="24" width="8" height="8" rx="2"/><rect x="54" y="34" width="8" height="8" rx="2"/><rect x="74" y="34" width="8" height="8" rx="2"/><rect x="54" y="44" width="8" height="8" rx="2"/><rect x="74" y="44" width="8" height="8" rx="2"/><rect x="54" y="54" width="8" height="8" rx="2"/><rect x="74" y="54" width="8" height="8" rx="2"/><rect x="54" y="64" width="8" height="8" rx="2"/><rect x="64" y="64" width="8" height="8" rx="2"/></g></svg><span>eoin<b>derry</b>.com</span></div>
+</div>
+
+<!-- 2 · cleaning -->
+<div class="thumb" id="t02">
+  <div class="eyebrow">EXCEL · 02 WORKING WITH DATA</div>
+  <div class="hook">Clean <em>messy data</em><br><span class="u">without tears.</span></div>
+  <div class="motif" style="padding:0;border:none;background:none;box-shadow:none">
+    <table class="sheetmini" style="box-shadow:0 24px 60px rgba(28,40,35,.16)">
+      <tr><td class="strike">&nbsp;&nbsp;aoife MURPHY</td></tr>
+      <tr><td class="arrow" style="border-left:none;border-right:none;background:none">↓</td></tr>
+      <tr><td class="ok">Aoife Murphy</td></tr>
+    </table>
+  </div>
+  <div class="brandrow"><svg class="mark" width="44" height="44" viewBox="0 0 96 96"><g fill="#0E7A4F"><rect x="14" y="24" width="8" height="8" rx="2"/><rect x="24" y="24" width="8" height="8" rx="2"/><rect x="34" y="24" width="8" height="8" rx="2" fill="#6FC39A"/><rect x="14" y="34" width="8" height="8" rx="2"/><rect x="14" y="44" width="8" height="8" rx="2"/><rect x="24" y="44" width="8" height="8" rx="2"/><rect x="34" y="44" width="8" height="8" rx="2"/><rect x="14" y="54" width="8" height="8" rx="2"/><rect x="14" y="64" width="8" height="8" rx="2"/><rect x="24" y="64" width="8" height="8" rx="2"/><rect x="34" y="64" width="8" height="8" rx="2"/><rect x="54" y="24" width="8" height="8" rx="2"/><rect x="64" y="24" width="8" height="8" rx="2"/><rect x="54" y="34" width="8" height="8" rx="2"/><rect x="74" y="34" width="8" height="8" rx="2"/><rect x="54" y="44" width="8" height="8" rx="2"/><rect x="74" y="44" width="8" height="8" rx="2"/><rect x="54" y="54" width="8" height="8" rx="2"/><rect x="74" y="54" width="8" height="8" rx="2"/><rect x="54" y="64" width="8" height="8" rx="2"/><rect x="64" y="64" width="8" height="8" rx="2"/></g></svg><span>eoin<b>derry</b>.com</span></div>
+</div>
+
+<!-- 3 · tables -->
+<div class="thumb" id="t03">
+  <div class="eyebrow">EXCEL · 02 WORKING WITH DATA</div>
+  <div class="hook"><em>Ctrl+T</em><br>changes<br>everything.</div>
+  <div class="motif" style="padding:0;border:none;background:none;box-shadow:none">
+    <table class="sheetmini" style="box-shadow:0 24px 60px rgba(28,40,35,.16)">
+      <tr class="hd"><td>Date</td><td>Item</td><td>£</td></tr>
+      <tr><td>3 Jun</td><td>Paper</td><td>41</td></tr>
+      <tr><td>4 Jun</td><td>Toner</td><td>118</td></tr>
+      <tr><td class="ok" colspan="3">+ new row absorbed ✓</td></tr>
+    </table>
+  </div>
+  <div class="brandrow"><svg class="mark" width="44" height="44" viewBox="0 0 96 96"><g fill="#0E7A4F"><rect x="14" y="24" width="8" height="8" rx="2"/><rect x="24" y="24" width="8" height="8" rx="2"/><rect x="34" y="24" width="8" height="8" rx="2" fill="#6FC39A"/><rect x="14" y="34" width="8" height="8" rx="2"/><rect x="14" y="44" width="8" height="8" rx="2"/><rect x="24" y="44" width="8" height="8" rx="2"/><rect x="34" y="44" width="8" height="8" rx="2"/><rect x="14" y="54" width="8" height="8" rx="2"/><rect x="14" y="64" width="8" height="8" rx="2"/><rect x="24" y="64" width="8" height="8" rx="2"/><rect x="34" y="64" width="8" height="8" rx="2"/><rect x="54" y="24" width="8" height="8" rx="2"/><rect x="64" y="24" width="8" height="8" rx="2"/><rect x="54" y="34" width="8" height="8" rx="2"/><rect x="74" y="34" width="8" height="8" rx="2"/><rect x="54" y="44" width="8" height="8" rx="2"/><rect x="74" y="44" width="8" height="8" rx="2"/><rect x="54" y="54" width="8" height="8" rx="2"/><rect x="74" y="54" width="8" height="8" rx="2"/><rect x="54" y="64" width="8" height="8" rx="2"/><rect x="64" y="64" width="8" height="8" rx="2"/></g></svg><span>eoin<b>derry</b>.com</span></div>
+</div>
+
+<!-- 4 · sumifs -->
+<div class="thumb" id="t04">
+  <div class="eyebrow">EXCEL · 03 FORMULAS THAT THINK</div>
+  <div class="hook" style="font-size:98px">One formula.<br><em>Every</em> answer.</div>
+  <div class="motif" style="top:auto;bottom:120px"><span class="cellref">how much · how many</span>=SUMIFS(<em style="color:var(--green)">…</em>)</div>
+  <div class="brandrow"><svg class="mark" width="44" height="44" viewBox="0 0 96 96"><g fill="#0E7A4F"><rect x="14" y="24" width="8" height="8" rx="2"/><rect x="24" y="24" width="8" height="8" rx="2"/><rect x="34" y="24" width="8" height="8" rx="2" fill="#6FC39A"/><rect x="14" y="34" width="8" height="8" rx="2"/><rect x="14" y="44" width="8" height="8" rx="2"/><rect x="24" y="44" width="8" height="8" rx="2"/><rect x="34" y="44" width="8" height="8" rx="2"/><rect x="14" y="54" width="8" height="8" rx="2"/><rect x="14" y="64" width="8" height="8" rx="2"/><rect x="24" y="64" width="8" height="8" rx="2"/><rect x="34" y="64" width="8" height="8" rx="2"/><rect x="54" y="24" width="8" height="8" rx="2"/><rect x="64" y="24" width="8" height="8" rx="2"/><rect x="54" y="34" width="8" height="8" rx="2"/><rect x="74" y="34" width="8" height="8" rx="2"/><rect x="54" y="44" width="8" height="8" rx="2"/><rect x="74" y="44" width="8" height="8" rx="2"/><rect x="54" y="54" width="8" height="8" rx="2"/><rect x="74" y="54" width="8" height="8" rx="2"/><rect x="54" y="64" width="8" height="8" rx="2"/><rect x="64" y="64" width="8" height="8" rx="2"/></g></svg><span>eoin<b>derry</b>.com</span></div>
+</div>
+
+<!-- 5 · xlookup -->
+<div class="thumb" id="t05">
+  <div class="eyebrow">EXCEL · 04 LOOKUPS</div>
+  <div class="hook">Forget<br><span class="u">VLOOKUP.</span></div>
+  <div class="motif"><span class="cellref">the one to learn first</span>=XLOOKUP(<em style="color:var(--green)">…</em>)</div>
+  <div class="brandrow"><svg class="mark" width="44" height="44" viewBox="0 0 96 96"><g fill="#0E7A4F"><rect x="14" y="24" width="8" height="8" rx="2"/><rect x="24" y="24" width="8" height="8" rx="2"/><rect x="34" y="24" width="8" height="8" rx="2" fill="#6FC39A"/><rect x="14" y="34" width="8" height="8" rx="2"/><rect x="14" y="44" width="8" height="8" rx="2"/><rect x="24" y="44" width="8" height="8" rx="2"/><rect x="34" y="44" width="8" height="8" rx="2"/><rect x="14" y="54" width="8" height="8" rx="2"/><rect x="14" y="64" width="8" height="8" rx="2"/><rect x="24" y="64" width="8" height="8" rx="2"/><rect x="34" y="64" width="8" height="8" rx="2"/><rect x="54" y="24" width="8" height="8" rx="2"/><rect x="64" y="24" width="8" height="8" rx="2"/><rect x="54" y="34" width="8" height="8" rx="2"/><rect x="74" y="34" width="8" height="8" rx="2"/><rect x="54" y="44" width="8" height="8" rx="2"/><rect x="74" y="44" width="8" height="8" rx="2"/><rect x="54" y="54" width="8" height="8" rx="2"/><rect x="74" y="54" width="8" height="8" rx="2"/><rect x="54" y="64" width="8" height="8" rx="2"/><rect x="64" y="64" width="8" height="8" rx="2"/></g></svg><span>eoin<b>derry</b>.com</span></div>
+</div>
+
+<!-- 6 · pivots -->
+<div class="thumb" id="t06">
+  <div class="eyebrow">EXCEL · 05 ANALYSIS</div>
+  <div class="hook">PivotTables<br>aren't <em>hard</em>.</div>
+  <div class="motif" style="padding:0;border:none;background:none;box-shadow:none">
+    <table class="sheetmini" style="box-shadow:0 24px 60px rgba(28,40,35,.16)">
+      <tr class="hd"><td>Σ</td><td>Lite</td><td>Pro</td></tr>
+      <tr><td>Cork</td><td>150</td><td>480</td></tr>
+      <tr><td>Dublin</td><td>220</td><td>610</td></tr>
+      <tr><td class="ok">Total</td><td class="ok">370</td><td class="ok">1,090</td></tr>
+    </table>
+  </div>
+  <div class="brandrow"><svg class="mark" width="44" height="44" viewBox="0 0 96 96"><g fill="#0E7A4F"><rect x="14" y="24" width="8" height="8" rx="2"/><rect x="24" y="24" width="8" height="8" rx="2"/><rect x="34" y="24" width="8" height="8" rx="2" fill="#6FC39A"/><rect x="14" y="34" width="8" height="8" rx="2"/><rect x="14" y="44" width="8" height="8" rx="2"/><rect x="24" y="44" width="8" height="8" rx="2"/><rect x="34" y="44" width="8" height="8" rx="2"/><rect x="14" y="54" width="8" height="8" rx="2"/><rect x="14" y="64" width="8" height="8" rx="2"/><rect x="24" y="64" width="8" height="8" rx="2"/><rect x="34" y="64" width="8" height="8" rx="2"/><rect x="54" y="24" width="8" height="8" rx="2"/><rect x="64" y="24" width="8" height="8" rx="2"/><rect x="54" y="34" width="8" height="8" rx="2"/><rect x="74" y="34" width="8" height="8" rx="2"/><rect x="54" y="44" width="8" height="8" rx="2"/><rect x="74" y="44" width="8" height="8" rx="2"/><rect x="54" y="54" width="8" height="8" rx="2"/><rect x="74" y="54" width="8" height="8" rx="2"/><rect x="54" y="64" width="8" height="8" rx="2"/><rect x="64" y="64" width="8" height="8" rx="2"/></g></svg><span>eoin<b>derry</b>.com</span></div>
+</div>
+
+<!-- 7 · dropdowns -->
+<div class="thumb" id="t07">
+  <div class="eyebrow">EXCEL · 06 POWER TOOLS</div>
+  <div class="hook">Stop <em>bad data</em><br>at the door.</div>
+  <div class="motif" style="padding:0;border:none;background:none;box-shadow:none">
+    <table class="sheetmini" style="box-shadow:0 24px 60px rgba(28,40,35,.16)">
+      <tr><td class="ok" style="border:3px solid var(--green)">Dublin&nbsp;&nbsp;&nbsp;&nbsp;▾</td></tr>
+      <tr><td>Cork</td></tr>
+      <tr><td>Galway</td></tr>
+      <tr><td class="strike">dub.&nbsp;&nbsp;✗</td></tr>
+    </table>
+  </div>
+  <div class="brandrow"><svg class="mark" width="44" height="44" viewBox="0 0 96 96"><g fill="#0E7A4F"><rect x="14" y="24" width="8" height="8" rx="2"/><rect x="24" y="24" width="8" height="8" rx="2"/><rect x="34" y="24" width="8" height="8" rx="2" fill="#6FC39A"/><rect x="14" y="34" width="8" height="8" rx="2"/><rect x="14" y="44" width="8" height="8" rx="2"/><rect x="24" y="44" width="8" height="8" rx="2"/><rect x="34" y="44" width="8" height="8" rx="2"/><rect x="14" y="54" width="8" height="8" rx="2"/><rect x="14" y="64" width="8" height="8" rx="2"/><rect x="24" y="64" width="8" height="8" rx="2"/><rect x="34" y="64" width="8" height="8" rx="2"/><rect x="54" y="24" width="8" height="8" rx="2"/><rect x="64" y="24" width="8" height="8" rx="2"/><rect x="54" y="34" width="8" height="8" rx="2"/><rect x="74" y="34" width="8" height="8" rx="2"/><rect x="54" y="44" width="8" height="8" rx="2"/><rect x="74" y="44" width="8" height="8" rx="2"/><rect x="54" y="54" width="8" height="8" rx="2"/><rect x="74" y="54" width="8" height="8" rx="2"/><rect x="54" y="64" width="8" height="8" rx="2"/><rect x="64" y="64" width="8" height="8" rx="2"/></g></svg><span>eoin<b>derry</b>.com</span></div>
+</div>
+
+<!-- 8 · budget (money) -->
+<div class="thumb money" id="t08">
+  <div class="eyebrow">MONEY · EXCEL APPLIED</div>
+  <div class="hook" style="font-size:98px">The <em>4-number</em><br>budget.</div>
+  <div class="motif" style="padding:0;border:none;background:none;box-shadow:none">
+    <div class="pillcol">
+      <div class="pill">IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;£2,400</div>
+      <div class="pill">FIXED&nbsp;&nbsp;&nbsp;£1,310</div>
+      <div class="pill">FLEX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;£640</div>
+      <div class="pill">FUTURE&nbsp;&nbsp;&nbsp;£450 <small>← the point</small></div>
+    </div>
+  </div>
+  <div class="brandrow"><svg class="mark" width="44" height="44" viewBox="0 0 96 96"><g fill="#FFFFFF"><rect x="14" y="24" width="8" height="8" rx="2"/><rect x="24" y="24" width="8" height="8" rx="2"/><rect x="34" y="24" width="8" height="8" rx="2" fill="#A8DEC5"/><rect x="14" y="34" width="8" height="8" rx="2"/><rect x="14" y="44" width="8" height="8" rx="2"/><rect x="24" y="44" width="8" height="8" rx="2"/><rect x="34" y="44" width="8" height="8" rx="2"/><rect x="14" y="54" width="8" height="8" rx="2"/><rect x="14" y="64" width="8" height="8" rx="2"/><rect x="24" y="64" width="8" height="8" rx="2"/><rect x="34" y="64" width="8" height="8" rx="2"/><rect x="54" y="24" width="8" height="8" rx="2"/><rect x="64" y="24" width="8" height="8" rx="2"/><rect x="54" y="34" width="8" height="8" rx="2"/><rect x="74" y="34" width="8" height="8" rx="2"/><rect x="54" y="44" width="8" height="8" rx="2"/><rect x="74" y="44" width="8" height="8" rx="2"/><rect x="54" y="54" width="8" height="8" rx="2"/><rect x="74" y="54" width="8" height="8" rx="2"/><rect x="54" y="64" width="8" height="8" rx="2"/><rect x="64" y="64" width="8" height="8" rx="2"/></g></svg><span>eoin<b>derry</b>.com</span></div>
+</div>
+
+<!-- 9 · compound (money) -->
+<div class="thumb money" id="t09">
+  <div class="eyebrow">MONEY · EXCEL APPLIED</div>
+  <div class="hook">Watch your<br>money <em>grow</em>.</div>
+  <div class="motif" style="padding:28px 34px">
+    <svg width="420" height="270" viewBox="0 0 420 270">
+      <line x1="30" y1="20" x2="30" y2="230" stroke="#1E4A37" stroke-width="2"/>
+      <line x1="30" y1="230" x2="400" y2="230" stroke="#1E4A37" stroke-width="2"/>
+      <path d="M30 230 L390 130 L390 40 Q210 165 30 230 Z" fill="rgba(168,222,197,.18)"/>
+      <path d="M30 230 L390 130" stroke="#9DB3A6" stroke-width="4" stroke-dasharray="10 8" fill="none"/>
+      <path d="M30 230 Q210 165 390 40" stroke="#A8DEC5" stroke-width="6" fill="none"/>
+    </svg>
+  </div>
+  <div class="brandrow"><svg class="mark" width="44" height="44" viewBox="0 0 96 96"><g fill="#FFFFFF"><rect x="14" y="24" width="8" height="8" rx="2"/><rect x="24" y="24" width="8" height="8" rx="2"/><rect x="34" y="24" width="8" height="8" rx="2" fill="#A8DEC5"/><rect x="14" y="34" width="8" height="8" rx="2"/><rect x="14" y="44" width="8" height="8" rx="2"/><rect x="24" y="44" width="8" height="8" rx="2"/><rect x="34" y="44" width="8" height="8" rx="2"/><rect x="14" y="54" width="8" height="8" rx="2"/><rect x="14" y="64" width="8" height="8" rx="2"/><rect x="24" y="64" width="8" height="8" rx="2"/><rect x="34" y="64" width="8" height="8" rx="2"/><rect x="54" y="24" width="8" height="8" rx="2"/><rect x="64" y="24" width="8" height="8" rx="2"/><rect x="54" y="34" width="8" height="8" rx="2"/><rect x="74" y="34" width="8" height="8" rx="2"/><rect x="54" y="44" width="8" height="8" rx="2"/><rect x="74" y="44" width="8" height="8" rx="2"/><rect x="54" y="54" width="8" height="8" rx="2"/><rect x="74" y="54" width="8" height="8" rx="2"/><rect x="54" y="64" width="8" height="8" rx="2"/><rect x="64" y="64" width="8" height="8" rx="2"/></g></svg><span>eoin<b>derry</b>.com</span></div>
+</div>
+
+<!-- 10 · copilot (m365) -->
+<div class="thumb m365" id="t10">
+  <div class="eyebrow">M365 · FIELD NOTES</div>
+  <div class="hook">Copilot in Excel:<br><em>the truth</em>.</div>
+  <div class="motif" style="font-size:34px;line-height:1.6">
+    drafts&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#A8DEC5">✓</span><br>
+    grunt work&nbsp;<span style="color:#A8DEC5">✓</span><br>
+    your numbers&nbsp;<span style="color:#C97B62">✗</span><br>
+    judgement&nbsp;&nbsp;<span style="color:#C97B62">✗</span>
+  </div>
+  <div class="brandrow"><svg class="mark" width="44" height="44" viewBox="0 0 96 96"><g fill="#FFFFFF"><rect x="14" y="24" width="8" height="8" rx="2"/><rect x="24" y="24" width="8" height="8" rx="2"/><rect x="34" y="24" width="8" height="8" rx="2" fill="#A8DEC5"/><rect x="14" y="34" width="8" height="8" rx="2"/><rect x="14" y="44" width="8" height="8" rx="2"/><rect x="24" y="44" width="8" height="8" rx="2"/><rect x="34" y="44" width="8" height="8" rx="2"/><rect x="14" y="54" width="8" height="8" rx="2"/><rect x="14" y="64" width="8" height="8" rx="2"/><rect x="24" y="64" width="8" height="8" rx="2"/><rect x="34" y="64" width="8" height="8" rx="2"/><rect x="54" y="24" width="8" height="8" rx="2"/><rect x="64" y="24" width="8" height="8" rx="2"/><rect x="54" y="34" width="8" height="8" rx="2"/><rect x="74" y="34" width="8" height="8" rx="2"/><rect x="54" y="44" width="8" height="8" rx="2"/><rect x="74" y="44" width="8" height="8" rx="2"/><rect x="54" y="54" width="8" height="8" rx="2"/><rect x="74" y="54" width="8" height="8" rx="2"/><rect x="54" y="64" width="8" height="8" rx="2"/><rect x="64" y="64" width="8" height="8" rx="2"/></g></svg><span>eoin<b>derry</b>.com</span></div>
+</div>
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 {% assign p = include.post %}
-{% assign dom = site.data.roadmap | where: "id", p.domain | first %}
+{% assign dom = nil %}
+{% if p.domain %}{% assign dom = site.data.roadmap | where: "id", p.domain | first %}{% endif %}
 <article class="post-card reveal" data-domain="{{ p.domain }}">
   <a class="post-card-link" href="{{ p.url | relative_url }}">
     <div class="post-card-top">

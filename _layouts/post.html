@@ -1,7 +1,8 @@
 ---
 layout: default
 ---
-{% assign dom = site.data.roadmap | where: "id", page.domain | first %}
+{% assign dom = nil %}
+{% if page.domain %}{% assign dom = site.data.roadmap | where: "id", page.domain | first %}{% endif %}
 <article class="article">
   <header class="article-head">
     <div class="wrap wrap--narrow">
@@ -35,7 +36,11 @@ layout: default
       </a>
       {% endif %}
 
+      {% if page.domain %}
       {% assign related = site.posts | where: "domain", page.domain | where_exp: "p", "p.url != page.url" %}
+      {% else %}
+      {% assign related = site.posts | where_exp: "p", "p.url != page.url" %}
+      {% endif %}
       {% if related.size > 0 %}
       <h2 class="foot-heading">Keep going</h2>
       <div class="card-grid card-grid--2">
