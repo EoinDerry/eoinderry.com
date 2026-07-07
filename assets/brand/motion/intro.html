@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; box-sizing:border-box; }
+  html,body { width:1920px; height:1080px; overflow:hidden; }
+  .stage {
+    position:relative; width:1920px; height:1080px;
+    background:
+      repeating-linear-gradient(0deg, transparent 0 107px, #EEECE2 107px 108px),
+      repeating-linear-gradient(90deg, transparent 0 107px, #EEECE2 107px 108px),
+      #FBFAF7;
+  }
+  .vignette {
+    position:absolute; inset:0;
+    background: radial-gradient(75% 75% at 50% 46%, transparent 55%, rgba(251,250,247,.9) 100%);
+  }
+  .mark-group { position:absolute; left:50%; top:445px; width:0; height:0; }
+  .cell {
+    position:absolute; width:60px; height:60px; border-radius:15px;
+    background:#0E7A4F; will-change:transform,opacity;
+  }
+  .cell.hi { background:#6FC39A; }
+  .ring {
+    position:absolute; border:6px solid #6FC39A; border-radius:26px;
+    width:84px; height:84px; opacity:0; will-change:transform,opacity;
+  }
+  .words {
+    position:absolute; left:0; right:0; top:640px; text-align:center;
+    will-change:transform,opacity;
+  }
+  .name {
+    font:800 118px 'Bricolage Grotesque',sans-serif; letter-spacing:-0.03em; color:#1C2823;
+  }
+  .name b { font-weight:800; }
+  .name .dim { color:#8A948D; font-weight:700; }
+  .tag {
+    margin-top:14px; font:500 40px 'IBM Plex Mono',monospace; color:#0E7A4F;
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="vignette"></div>
+  <div class="mark-group" id="mark"></div>
+  <div class="words" id="words">
+    <div class="name">eoin<b>derry</b><span class="dim">.com</span></div>
+    <div class="tag">Solving real problems with Excel.</div>
+  </div>
+</div>
+<script>
+  // ED monogram cell geometry (logo units; cell=8, gap=2, origin at mark centre 48,48)
+  const CELLS = [
+    // E
+    [14,24],[24,24],[34,24, true], // top row; [34,24] is the highlight cell
+    [14,34],
+    [14,44],[24,44],[34,44],
+    [14,54],
+    [14,64],[24,64],[34,64],
+    // D
+    [54,24],[64,24],
+    [54,34],[74,34],
+    [54,44],[74,44],
+    [54,54],[74,54],
+    [54,64],[64,64],
+  ];
+  const S = 7.5;               // logo unit -> px (cell 8 -> 60px)
+  const CX = 48, CY = 48;      // logo centre in logo units
+
+  const mark = document.getElementById('mark');
+  const els = [];
+  // deterministic pseudo-random scatter per cell
+  function rnd(i, k) { const x = Math.sin(i * 127.1 + k * 311.7) * 43758.5453; return x - Math.floor(x); }
+
+  // assembly order: sweep left-to-right with a little jitter, highlight cell forced last
+  const order = CELLS.map((c, i) => ({ i, key: c[2] ? 999 : c[0] + rnd(i, 9) * 14 }))
+                     .sort((a, b) => a.key - b.key)
+                     .map((o, rank) => ({ ...o, rank }));
+
+  CELLS.forEach((c, i) => {
+    const d = document.createElement('div');
+    d.className = 'cell' + (c[2] ? ' hi' : '');
+    mark.appendChild(d);
+    const homeX = (c[0] + 4 - CX) * S - 30; // +4 centres the 8-wide cell
+    const homeY = (c[1] + 4 - CY) * S - 30;
+    const ang = rnd(i, 1) * Math.PI * 2;
+    const dist = 620 + rnd(i, 2) * 520;
+    els.push({
+      d, homeX, homeY,
+      startX: homeX + Math.cos(ang) * dist,
+      startY: homeY + Math.sin(ang) * dist * 0.62,
+      rot: (rnd(i, 3) - 0.5) * 130,
+      rank: order.find(o => o.i === i).rank,
+      hi: !!c[2],
+    });
+  });
+  const ring = document.createElement('div');
+  ring.className = 'ring';
+  mark.appendChild(ring);
+  const hiEl = els.find(e => e.hi);
+  ring.style.left = (hiEl.homeX - 12) + 'px';
+  ring.style.top = (hiEl.homeY - 12) + 'px';
+
+  const words = document.getElementById('words');
+
+  const easeOutBack = t => { const c1 = 1.20, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); };
+  const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+  const clamp01 = x => Math.max(0, Math.min(1, x));
+
+  // timeline (ms): cells 0–1080 (stagger 28ms, flight 480ms; highlight lands ~1040)
+  // ring pulse 1040–1400 · group lifts 1150–1600 · words 1250–1700 · hold to 2500
+  window.seek = function (ms) {
+    els.forEach(e => {
+      const t0 = e.rank * 28;
+      const p = clamp01((ms - t0) / 480);
+      const q = easeOutBack(p);
+      const x = e.startX + (e.homeX - e.startX) * q;
+      const y = e.startY + (e.homeY - e.startY) * q;
+      const r = e.rot * (1 - easeOutCubic(p));
+      const sc = 1.28 - 0.28 * easeOutCubic(p);
+      e.d.style.opacity = clamp01(p * 4);
+      e.d.style.transform = `translate(${x}px, ${y}px) rotate(${r}deg) scale(${sc})`;
+    });
+    const rp = clamp01((ms - 1040) / 360);
+    ring.style.opacity = rp === 0 ? 0 : (1 - rp) * 0.9;
+    ring.style.transform = `scale(${0.7 + rp * 1.05})`;
+    const lift = easeOutCubic(clamp01((ms - 1150) / 450));
+    mark.style.transform = `translateY(${-64 * lift}px)`;
+    const wp = easeOutCubic(clamp01((ms - 1250) / 450));
+    words.style.opacity = wp;
+    words.style.transform = `translateY(${28 * (1 - wp)}px)`;
+  };
+  window.seek(0);
+</script>
+</body>
+</html>
