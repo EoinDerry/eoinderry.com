@@ -789,6 +789,74 @@ a:hover { color: var(--accent-deep); }
   font-size: 0.92rem; color: var(--ink-soft);
 }
 
+/* ---- syllabus (the /roadmap/ page as a full course) ----------------------- */
+
+.syl-meter {
+  display: flex; align-items: center; gap: 0.9rem; flex-wrap: wrap;
+  margin-top: 1.6rem; padding: 0.9rem 1.2rem;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow-1);
+}
+.syl-meter-num {
+  font-family: var(--font-mono); font-size: 1.35rem; font-weight: 600;
+  color: var(--accent);
+}
+.syl-meter-of { color: var(--ink-soft); font-size: 1rem; font-weight: 400; }
+.syl-meter-label { font-size: 0.88rem; color: var(--ink-soft); }
+.syl-meter-bar {
+  flex: 1 1 140px; height: 8px; border-radius: 99px; overflow: hidden;
+  background: var(--tint); border: 1px solid var(--tint-2);
+}
+.syl-meter-bar > span {
+  display: block; height: 100%; background: var(--accent); border-radius: 99px;
+}
+
+.syl-progress { display: flex; align-items: center; gap: 0.7rem; margin: 0 0 1.1rem; }
+.syl-progress-bar {
+  flex: 1; height: 6px; border-radius: 99px; overflow: hidden;
+  background: var(--tint); border: 1px solid var(--tint-2);
+}
+.syl-progress-bar > span { display: block; height: 100%; background: var(--accent); border-radius: 99px; }
+.syl-progress-count { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-soft); }
+
+.syl-lessons { list-style: none; margin: 0 0 1.1rem; padding: 0; display: grid; gap: 0.15rem; }
+.syl-lesson {
+  display: flex; align-items: baseline; gap: 0.7rem;
+  padding: 0.42rem 0.55rem; border-radius: 8px; font-size: 0.97rem;
+}
+.syl-lesson:hover { background: var(--tint); }
+.syl-lesson-num {
+  font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-soft);
+  min-width: 2.1rem; text-align: right; flex-shrink: 0;
+}
+.syl-lesson.is-live .syl-lesson-num { color: var(--accent); }
+.syl-lesson a { text-decoration: none; color: var(--ink); }
+.syl-lesson a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
+.syl-lesson-soon { color: var(--ink-soft); }
+.chip--soon {
+  font-family: var(--font-mono); font-size: 0.68rem; padding: 0.1rem 0.5rem;
+  border-radius: 99px; color: var(--amber);
+  border: 1px solid rgba(196, 137, 30, 0.35); background: rgba(196, 137, 30, 0.08);
+  align-self: center; flex-shrink: 0;
+}
+
+.syl-outcome {
+  margin: 0; padding: 0.85rem 1rem;
+  background: var(--tint); border: 1px solid var(--tint-2); border-radius: 10px;
+  font-size: 0.93rem; color: var(--ink-soft);
+}
+.syl-outcome-key { font-weight: 600; color: var(--accent-deep); }
+
+.syl-fieldnotes {
+  margin-top: 3rem; padding: 1.6rem 1.8rem;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow-1);
+}
+.road-posts--cols { margin-top: 1rem; }
+@media (min-width: 700px) {
+  .road-posts--cols { grid-template-columns: 1fr 1fr; column-gap: 1.6rem; }
+}
+
 /* ---- 404 ------------------------------------------------------------------ */
 
 .notfound { text-align: center; padding-block: clamp(4rem, 10vw, 8rem); }

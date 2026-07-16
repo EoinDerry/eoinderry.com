@@ -1,102 +1,184 @@
 # ------------------------------------------------------------------
-# The Excel path — six stages from first spreadsheet to power user.
-# Each stage becomes a node on the /roadmap/ page. Articles attach
-# themselves to a stage via `domain: <id>` in their front matter.
-# Edit topic lists freely — the page rebuilds itself.
+# The Excel syllabus — six stages from first spreadsheet to power
+# user. Each stage is a node on the /roadmap/ page.
+#
+# Two ways an article appears on the page:
+#   1. `domain: <id>` in a post's front matter attaches it to the
+#      stage's "guides in this stage" list (unchanged behaviour).
+#   2. A topic below with a `slug:` renders as a LIVE lesson linking
+#      to /articles/<slug>/. Topics without a slug show as "coming".
+#
+# `outcome` is the stage's exit test ("you can now…"); `hours` is an
+# honest estimate of learning time including practice.
 # ------------------------------------------------------------------
 
 - id: foundations
   number: "01"
   title: Foundations
   level: Beginner
+  hours: "≈ 6 hrs"
   blurb: >-
     The habits that make everything else easy — how cells, ranges and
     references really work, and the small set of moves you'll use ten
     thousand times.
+  outcome: >-
+    You can build, navigate and read a small sheet fluently — and
+    nothing about the grid surprises you any more.
   topics:
-    - Cells, ranges and the grid mindset
-    - Relative vs absolute references — the $ sign, demystified
-    - Basic formulas — SUM, AVERAGE, MIN, MAX, COUNT
-    - The fill handle and copy-down logic
-    - Number formats vs the value underneath
-    - Keyboard habits that pay for themselves
-    - Freeze panes, split view and navigating big sheets
+    - name: The grid mindset — cells, ranges and how Excel thinks
+      slug: the-grid-mindset-how-excel-thinks
+    - name: "SUM, AVERAGE and COUNT: the basics, done properly"
+      slug: sum-average-count-basics-done-properly
+    - name: The fill handle — Excel's pattern engine
+      slug: the-fill-handle-excels-pattern-engine
+    - name: Relative vs absolute references — the $ sign, demystified
+      slug: the-dollar-sign-cell-references-explained
+    - name: Number formats vs the value underneath
+      slug: number-formats-costume-not-value
+    - name: Percentages without panic
+      slug: percentages-without-panic
+    - name: Keyboard habits that pay for themselves
+      slug: keyboard-habits-that-pay-for-themselves
+    - name: Freeze panes, splits and navigating big sheets
+      slug: freeze-panes-navigate-big-sheets
 
 - id: working-with-data
   number: "02"
   title: Working with data
   level: Beginner → improver
+  hours: "≈ 7 hrs"
   blurb: >-
     Real spreadsheets start as someone else's mess. This stage is about
     taming it — structuring lists properly and cleaning imported data
     without touching it by hand.
+  outcome: >-
+    You can take any export — however messy — and turn it into a
+    clean, structured table, repeatably and without fear.
   topics:
-    - Format as Table — the feature that changes everything
-    - Sorting and filtering without wrecking your data
-    - Cleaning text — TRIM, CLEAN and PROPER
-    - Numbers and dates stored as text (and how to fix them)
-    - Text to Columns and Flash Fill
-    - Removing duplicates safely
-    - Paste Special — values, transpose and the multiply trick
+    - name: Format as Table — the feature that changes everything
+      slug: format-as-table-the-feature-that-changes-everything
+    - name: Sorting and filtering without wrecking your data
+      slug: sorting-and-filtering-without-wrecking-your-data
+    - name: The cleaning routine — spaces, casing, text-numbers, dates
+      slug: the-445pm-export-cleaning-messy-data
+    - name: Text to Columns and Flash Fill
+      slug: text-to-columns-and-flash-fill
+    - name: Removing duplicates without losing data
+      slug: removing-duplicates-without-losing-data
+    - name: "Paste Special: values, transpose and the multiply trick"
+      slug: paste-special-values-transpose-multiply
+    - name: Structured references — formulas inside Tables
+      slug: structured-references-formulas-inside-tables
 
 - id: formulas
   number: "03"
   title: Formulas that think
   level: Improver
+  hours: "≈ 7 hrs"
   blurb: >-
     Where Excel stops being a calculator and starts answering
     questions — conditions, criteria and text logic that do the
     thinking for you.
+  outcome: >-
+    Your formulas answer questions — with conditions, dates and text
+    logic that a colleague can read and audit.
   topics:
-    - IF, IFS and nested logic done cleanly
-    - SUMIFS, COUNTIFS and AVERAGEIFS
-    - Text functions — LEFT, RIGHT, MID, TEXTBEFORE, TEXTAFTER
-    - Working with dates — TODAY, EOMONTH, NETWORKDAYS
-    - Error handling with IFERROR and IFNA
-    - Naming ranges so formulas read like sentences
+    - name: IF, IFS and nested logic done cleanly
+      slug: if-ifs-nested-logic-done-cleanly
+    - name: SUMIFS, COUNTIFS and AVERAGEIFS
+      slug: sumifs-and-friends-answers-from-a-list
+    - name: "Text surgery: TEXTBEFORE, TEXTAFTER and TEXTSPLIT"
+      slug: text-functions-textbefore-textafter
+    - name: Working with dates — TODAY, EOMONTH, NETWORKDAYS
+      slug: working-with-dates-excel
+    - name: IFERROR, IFNA and the art of failing loudly
+      slug: iferror-ifna-failing-loudly
+    - name: Named ranges — formulas that read like sentences
+      slug: named-ranges-formulas-read-like-sentences
+    - name: ROUND and the case of the missing penny
+      slug: round-and-the-missing-penny
+    - name: "Auditing formulas: trace, evaluate, trust"
+      slug: auditing-formulas-trace-evaluate-trust
 
 - id: lookups
   number: "04"
   title: Lookups & joining data
   level: Improver → advanced
+  hours: "≈ 5 hrs"
   blurb: >-
     The skill that separates users from power users — pulling the
     right value from another table, reliably, every time.
+  outcome: >-
+    You can join data across tables and sheets reliably — and debug
+    any lookup in minutes, including the inherited ones.
   topics:
-    - XLOOKUP — the lookup you should learn first
-    - Why VLOOKUP breaks (and when you'll still meet it)
-    - INDEX and MATCH for full control
-    - Two-way lookups and lookup keys
-    - Matching messy keys between tables
-    - Spilled ranges and the # operator
+    - name: XLOOKUP — the lookup you should learn first (and surviving VLOOKUP)
+      slug: xlookup-the-lookup-to-learn-first
+    - name: INDEX and MATCH — the lookup with the hood open
+      slug: index-and-match-for-full-control
+    - name: Matching messy keys between tables
+      slug: matching-messy-keys-between-tables
+    - name: Spilled ranges and the # operator
+      slug: dynamic-arrays-filter-sort-unique
+    - name: Approximate matches — banding, tiers and tax tables
 
 - id: analysis
   number: "05"
   title: Analysis & reporting
   level: Advanced
+  hours: "≈ 7 hrs"
   blurb: >-
     Turning a clean table into insight someone can act on —
     PivotTables, charts that tell the truth, and reports that update
     themselves.
+  outcome: >-
+    You can turn a clean table into a self-updating report — honest
+    charts, pivots, and a one-page dashboard someone reads in a minute.
   topics:
-    - PivotTables from first principles
-    - Grouping, slicers and pivot layouts
-    - Charts — choosing the right one, formatting it honestly
-    - Conditional formatting that highlights, not decorates
-    - Building a one-page dashboard
-    - Sharing workbooks without breaking them
+    - name: PivotTables from first principles
+      slug: pivottables-from-first-principles
+    - name: Grouping, slicers and pivot layouts
+      slug: grouping-slicers-pivot-layouts
+    - name: Charts that tell the truth
+      slug: charts-that-tell-the-truth
+    - name: Conditional formatting that highlights, not decorates
+      slug: conditional-formatting-highlights-not-decoration
+    - name: Sparklines — tiny charts for big tables
+      slug: sparklines-tiny-charts-big-tables
+    - name: Building a one-page dashboard
+      slug: building-a-one-page-dashboard
+    - name: Print and PDF — sheets people can actually read
+      slug: print-and-pdf-sheets-people-can-read
+    - name: Forecasting — trends and seasonality, honestly
 
 - id: power-tools
   number: "06"
   title: Power tools & automation
   level: Power user
+  hours: "≈ 8 hrs"
   blurb: >-
     The modern engine room — refreshable imports, formulas that spill,
     and the first steps into automating the boring parts entirely.
+  outcome: >-
+    The monthly ritual runs itself — refreshable imports, spilling
+    formulas, what-if models, and your first real automation.
   topics:
-    - Power Query — import, clean and refresh with one click
-    - Dynamic arrays — FILTER, SORT, UNIQUE
-    - LET and LAMBDA — formulas you can read
-    - Data validation and bulletproof inputs
-    - Recording your first macro
-    - When to leave Excel (and what for)
+    - name: Power Query — combine twelve monthly files in one click
+      slug: power-query-combine-monthly-files
+    - name: Dynamic arrays — FILTER, SORT and UNIQUE
+      slug: dynamic-arrays-filter-sort-unique
+    - name: LET and LAMBDA — formulas you can read
+      slug: let-and-lambda-formulas-you-can-read
+    - name: Drop-down lists and bulletproof inputs
+      slug: drop-down-lists-data-validation
+    - name: Goal Seek — making Excel work backwards
+      slug: goal-seek-excel-backwards
+    - name: Data Tables — test every assumption at once
+      slug: data-tables-every-assumption-at-once
+    - name: Your first macro (and when not to record one)
+      slug: your-first-macro-and-when-not-to
+    - name: Slow workbook? The performance habits
+      slug: slow-workbook-performance-habits
+    - name: When to leave Excel (and what for)
+      slug: when-to-leave-excel-and-what-for
+    - name: Power Pivot and the data model — beyond a million rows
