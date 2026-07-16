@@ -1,20 +1,34 @@
 ---
 layout: default
-title: The Path
+title: The Excel Syllabus
 nav: roadmap
 permalink: /roadmap/
-description: Excel as six skills, in order — from first spreadsheet to power user. Every guide attaches to its stage, so you can always see what's next.
+description: A complete Excel course in the open — six stages, forty-plus lessons in order, from your first cell to power user. Every lesson links to its full guide.
 ---
+
+{% assign total_lessons = 0 %}
+{% assign live_lessons = 0 %}
+{% for dom in site.data.roadmap %}
+  {% assign total_lessons = total_lessons | plus: dom.topics.size %}
+  {% for t in dom.topics %}{% if t.slug %}{% assign live_lessons = live_lessons | plus: 1 %}{% endif %}{% endfor %}
+{% endfor %}
 
 <section class="page-head page-head--list">
   <div class="wrap">
-    <p class="eyebrow">Excel, in order</p>
-    <h1 class="page-title">The path</h1>
+    <p class="eyebrow">The course, in the open</p>
+    <h1 class="page-title">The Excel syllabus</h1>
     <p class="article-standfirst">
       Excel isn't a pile of tricks — it's six skills, learned in order.
-      Each stage fills in as guides are published. Bookmark this page and
-      watch the sheet come to order.
+      This is the whole course: every lesson, in sequence, free. Start at
+      your stage, read down, and leave each stage able to do something
+      you couldn't before.
     </p>
+    <div class="syl-meter" role="status">
+      <span class="syl-meter-num">{{ live_lessons }}<span class="syl-meter-of"> / {{ total_lessons }}</span></span>
+      <span class="syl-meter-label">lessons live</span>
+      <span class="syl-meter-bar" aria-hidden="true"><span style="width: {{ live_lessons | times: 100.0 | divided_by: total_lessons | round }}%"></span></span>
+      <span class="syl-meter-label">≈ 40 hours, first cell → power user</span>
+    </div>
   </div>
   <div class="article-rule" aria-hidden="true"><span class="rule-packet"></span></div>
 </section>
@@ -24,44 +38,67 @@ description: Excel as six skills, in order — from first spreadsheet to power u
     <div class="roadmap" role="list">
       <div class="roadmap-spine" aria-hidden="true"><span class="spine-packet"></span></div>
       {% for dom in site.data.roadmap %}
-      {% assign posts = site.posts | where: "domain", dom.id %}
+      {% assign stage_total = dom.topics | size %}
+      {% assign stage_live = 0 %}
+      {% for t in dom.topics %}{% if t.slug %}{% assign stage_live = stage_live | plus: 1 %}{% endif %}{% endfor %}
       <section class="road-node reveal" id="{{ dom.id }}" role="listitem">
         <div class="road-port" aria-hidden="true">
-          <span class="road-jack{% if posts.size > 0 %} is-live{% endif %}"></span>
+          <span class="road-jack{% if stage_live > 0 %} is-live{% endif %}"></span>
         </div>
-        <div class="road-card{% if posts.size > 0 %} is-live{% endif %}">
+        <div class="road-card{% if stage_live > 0 %} is-live{% endif %}">
           <header class="road-head">
             <span class="road-num">{{ dom.number }}</span>
             <h2 class="road-title">{{ dom.title }}</h2>
             <span class="chip chip--weight" title="Who this stage is for">{{ dom.level }}</span>
+            <span class="chip chip--weight" title="Honest estimate, including practice">{{ dom.hours }}</span>
           </header>
           <p class="road-blurb">{{ dom.blurb }}</p>
 
-          <details class="road-topics">
-            <summary>What's in this stage <span class="road-topic-count">{{ dom.topics | size }}</span></summary>
-            <ul>
-              {% for topic in dom.topics %}<li>{{ topic }}</li>{% endfor %}
-            </ul>
-          </details>
+          <div class="syl-progress" aria-label="{{ stage_live }} of {{ stage_total }} lessons live">
+            <span class="syl-progress-bar" aria-hidden="true"><span style="width: {{ stage_live | times: 100.0 | divided_by: stage_total | round }}%"></span></span>
+            <span class="syl-progress-count">{{ stage_live }}/{{ stage_total }}</span>
+          </div>
 
-          {% if posts.size > 0 %}
-          <h3 class="road-sub">Guides in this stage</h3>
-          <ul class="road-posts">
-            {% for p in posts %}
-            <li><a href="{{ p.url | relative_url }}"><span class="go-cell" aria-hidden="true"></span>{{ p.title }}</a></li>
+          <ol class="syl-lessons">
+            {% for t in dom.topics %}
+            <li class="syl-lesson{% if t.slug %} is-live{% endif %}">
+              <span class="syl-lesson-num">{{ dom.number | times: 1 }}.{{ forloop.index }}</span>
+              {% if t.slug %}
+              <a href="{{ '/articles/' | append: t.slug | append: '/' | relative_url }}">{{ t.name }}</a>
+              {% else %}
+              <span class="syl-lesson-soon">{{ t.name }}</span>
+              <span class="chip chip--soon">coming</span>
+              {% endif %}
+            </li>
             {% endfor %}
-          </ul>
-          {% else %}
-          <p class="road-soon"><span class="led led--amber"></span>Guides in progress — subscribe below to catch them.</p>
-          {% endif %}
+          </ol>
+
+          <p class="syl-outcome"><span class="syl-outcome-key">You leave this stage able to:</span> {{ dom.outcome }}</p>
         </div>
       </section>
       {% endfor %}
     </div>
 
+    {% assign fieldnotes = site.posts | where_exp: "p", "p.domain == nil" %}
+    {% if fieldnotes.size > 0 %}
+    <div class="syl-fieldnotes reveal">
+      <h2 class="road-title">Beyond the syllabus — field notes</h2>
+      <p class="road-blurb">
+        The syllabus teaches the tool; these apply it — personal-finance
+        models and the wider Microsoft 365 world, using exactly the skills
+        above.
+      </p>
+      <ul class="road-posts road-posts--cols">
+        {% for p in fieldnotes %}
+        <li><a href="{{ p.url | relative_url }}"><span class="go-cell" aria-hidden="true"></span>{{ p.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
     <div class="wrap--narrow foot-news reveal">
-      <h2 class="foot-heading">Watch the path fill in</h2>
-      <p>Each new guide switches its stage from amber to live. One email per guide.</p>
+      <h2 class="foot-heading">Watch the syllabus fill in</h2>
+      <p>Every lesson that ships switches from amber to live. One email per guide.</p>
       {% include newsletter.html %}
     </div>
   </div>

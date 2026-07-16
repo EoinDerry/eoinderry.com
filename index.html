@@ -70,23 +70,25 @@ body_class: home
     <div class="section-head reveal">
       <div>
         <p class="eyebrow">Start here</p>
-        <h2 class="section-title">The path, from first sheet to power user</h2>
+        <h2 class="section-title">The syllabus, from first sheet to power user</h2>
       </div>
-      <a class="section-more" href="{{ '/roadmap/' | relative_url }}">Open the full path <span class="go-cell" aria-hidden="true"></span></a>
+      <a class="section-more" href="{{ '/roadmap/' | relative_url }}">Open the full syllabus <span class="go-cell" aria-hidden="true"></span></a>
     </div>
     <p class="section-lead reveal">
-      Excel isn't a pile of tricks — it's six skills, in order. Every guide
-      I publish attaches itself to its stage, so you can always see what's
-      covered, what's next, and where you are.
+      Excel isn't a pile of tricks — it's a course: six stages, forty-plus
+      lessons, in order, free. Every lesson links to a full guide, so you
+      can always see what's covered, what's next, and where you are.
     </p>
     <div class="path-grid">
       {% for dom in site.data.roadmap %}
-      {% assign count = site.posts | where: "domain", dom.id | size %}
-      <a class="path-node reveal{% if count > 0 %} is-live{% endif %}" href="{{ '/roadmap/' | relative_url }}#{{ dom.id }}">
+      {% assign stage_total = dom.topics | size %}
+      {% assign stage_live = 0 %}
+      {% for t in dom.topics %}{% if t.slug %}{% assign stage_live = stage_live | plus: 1 %}{% endif %}{% endfor %}
+      <a class="path-node reveal{% if stage_live > 0 %} is-live{% endif %}" href="{{ '/roadmap/' | relative_url }}#{{ dom.id }}">
         <span class="path-num">{{ dom.number }}</span>
         <span class="path-name">{{ dom.title }}</span>
         <span class="path-level">{{ dom.level }}</span>
-        <span class="path-count">{% if count > 0 %}{{ count }} guide{% if count != 1 %}s{% endif %}{% else %}soon{% endif %}</span>
+        <span class="path-count">{% if stage_live > 0 %}{{ stage_live }}/{{ stage_total }} lessons{% else %}soon{% endif %}</span>
       </a>
       {% endfor %}
     </div>
