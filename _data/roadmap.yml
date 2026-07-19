@@ -16,7 +16,7 @@
   number: "01"
   title: Foundations
   level: Beginner
-  hours: "≈ 6 hrs"
+  hours: "≈ 8 hrs"
   blurb: >-
     The habits that make everything else easy — how cells, ranges and
     references really work, and the small set of moves you'll use ten
@@ -41,12 +41,18 @@
       slug: keyboard-habits-that-pay-for-themselves
     - name: Freeze panes, splits and navigating big sheets
       slug: freeze-panes-navigate-big-sheets
+    - name: "Find & Replace: the underrated power tool"
+      slug: find-and-replace-the-underrated-power-tool
+    - name: Organising a workbook — sheets, tabs and structure
+      slug: organising-a-workbook-sheets-and-structure
+    - name: Custom number formats — the pattern language
+      slug: custom-number-formats-pattern-language
 
 - id: working-with-data
   number: "02"
   title: Working with data
   level: Beginner → improver
-  hours: "≈ 7 hrs"
+  hours: "≈ 9 hrs"
   blurb: >-
     Real spreadsheets start as someone else's mess. This stage is about
     taming it — structuring lists properly and cleaning imported data
@@ -69,12 +75,17 @@
       slug: paste-special-values-transpose-multiply
     - name: Structured references — formulas inside Tables
       slug: structured-references-formulas-inside-tables
+    - name: "Comparing two lists: new, missing, changed"
+      slug: comparing-two-lists-new-missing-changed
+    - name: CSV, encoding and importing without damage
+      slug: csv-encoding-import-what-went-wrong
+    - name: Linked data types — geography, stocks and beyond
 
 - id: formulas
   number: "03"
   title: Formulas that think
   level: Improver
-  hours: "≈ 7 hrs"
+  hours: "≈ 10 hrs"
   blurb: >-
     Where Excel stops being a calculator and starts answering
     questions — conditions, criteria and text logic that do the
@@ -99,12 +110,20 @@
       slug: round-and-the-missing-penny
     - name: "Auditing formulas: trace, evaluate, trust"
       slug: auditing-formulas-trace-evaluate-trust
+    - name: "Top-N thinking: LARGE, SMALL and ranking"
+      slug: top-n-thinking-large-small-ranking
+    - name: SUMPRODUCT and the weighted average
+      slug: sumproduct-weighted-averages
+    - name: Time arithmetic — timesheets and the 24-hour trap
+      slug: time-arithmetic-timesheets-24-hour-trap
+    - name: The checks row — self-testing spreadsheets
+      slug: the-checks-row-self-testing-spreadsheets
 
 - id: lookups
   number: "04"
   title: Lookups & joining data
   level: Improver → advanced
-  hours: "≈ 5 hrs"
+  hours: "≈ 6 hrs"
   blurb: >-
     The skill that separates users from power users — pulling the
     right value from another table, reliably, every time.
@@ -120,13 +139,16 @@
       slug: matching-messy-keys-between-tables
     - name: Spilled ranges and the # operator
       slug: dynamic-arrays-filter-sort-unique
+    - name: Matching on more than one column — composite keys
+      slug: multi-criteria-lookups-two-column-keys
     - name: Approximate matches — banding, tiers and tax tables
+      slug: approximate-matches-banding-tiers-tax-tables
 
 - id: analysis
   number: "05"
   title: Analysis & reporting
   level: Advanced
-  hours: "≈ 7 hrs"
+  hours: "≈ 10 hrs"
   blurb: >-
     Turning a clean table into insight someone can act on —
     PivotTables, charts that tell the truth, and reports that update
@@ -149,13 +171,21 @@
       slug: building-a-one-page-dashboard
     - name: Print and PDF — sheets people can actually read
       slug: print-and-pdf-sheets-people-can-read
+    - name: "Show Values As — shares, changes and running totals"
+      slug: pivot-show-values-as-percent-running-totals
+    - name: Histograms — the shape of your numbers
+      slug: histograms-distributions-shape-of-numbers
+    - name: Waterfall, Pareto and combo — the specialist charts
+      slug: waterfall-pareto-combo-specialist-charts
     - name: Forecasting — trends and seasonality, honestly
+      slug: forecasting-trends-seasonality-honestly
+    - name: Accessible spreadsheets — sheets everyone can read
 
 - id: power-tools
   number: "06"
   title: Power tools & automation
   level: Power user
-  hours: "≈ 8 hrs"
+  hours: "≈ 13 hrs"
   blurb: >-
     The modern engine room — refreshable imports, formulas that spill,
     and the first steps into automating the boring parts entirely.
@@ -165,20 +195,32 @@
   topics:
     - name: Power Query — combine twelve monthly files in one click
       slug: power-query-combine-monthly-files
+    - name: "Power Query II: unpivot, merge and append"
+      slug: power-query-2-unpivot-merge-append
     - name: Dynamic arrays — FILTER, SORT and UNIQUE
       slug: dynamic-arrays-filter-sort-unique
     - name: LET and LAMBDA — formulas you can read
       slug: let-and-lambda-formulas-you-can-read
+    - name: GROUPBY and PIVOTBY — pivots as formulas
+      slug: groupby-pivotby-pivots-as-formulas
     - name: Drop-down lists and bulletproof inputs
       slug: drop-down-lists-data-validation
+    - name: Sheet protection — workbooks that survive other people
+      slug: sheet-protection-workbooks-that-survive
     - name: Goal Seek — making Excel work backwards
       slug: goal-seek-excel-backwards
     - name: Data Tables — test every assumption at once
       slug: data-tables-every-assumption-at-once
+    - name: Solver — optimisation for real decisions
+      slug: solver-optimisation-real-decisions
     - name: Your first macro (and when not to record one)
       slug: your-first-macro-and-when-not-to
     - name: Slow workbook? The performance habits
       slug: slow-workbook-performance-habits
+    - name: The inheritable workbook
+      slug: the-inheritable-workbook
     - name: When to leave Excel (and what for)
       slug: when-to-leave-excel-and-what-for
     - name: Power Pivot and the data model — beyond a million rows
+      slug: power-pivot-and-the-data-model
+    - name: Python in Excel — pandas meets the grid
