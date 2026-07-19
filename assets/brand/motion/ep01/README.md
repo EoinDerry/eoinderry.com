@@ -7,7 +7,7 @@ animated screen plays full-frame and your face sits in the corner.
 
 | File | What it is |
 |------|------------|
-| `ep01-screen-1080p24.webm` | The rendered screen video, **6:12**, 1920×1080, silent. *(Not committed — rendered from the HTML below; re-render any time.)* |
+| `ep01-screen-1080p24.webm` | The rendered screen video, **6:12**, 1920×1080, silent — committed at full quality (3.5 Mbps VP8). |
 | `ep01-screen.html` | The animation source. Open in a browser and it plays on a loop; open with `?guide=1` to see the face-zone outline while lining up your webcam. |
 | `transcript.md` | The read-aloud script with scene timecodes matched to the video. |
 | `render.js` | Renders the HTML to frames + WebM (Playwright + ffmpeg). |
